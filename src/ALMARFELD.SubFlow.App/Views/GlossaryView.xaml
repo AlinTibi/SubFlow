@@ -1,0 +1,75 @@
+<UserControl x:Class="ALMARFELD.SubFlow.App.Views.GlossaryView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:l="clr-namespace:ALMARFELD.SubFlow.App.Services">
+    <Grid Margin="36,30,36,24">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <DockPanel>
+            <StackPanel DockPanel.Dock="Right" Orientation="Horizontal" VerticalAlignment="Center">
+                <Button Command="{Binding AddCommand}" Margin="0,0,8,0">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="&#xE710;" Style="{StaticResource Icon}" Margin="0,0,8,0"/>
+                        <TextBlock Text="{l:Loc Gl_Add}"/>
+                    </StackPanel>
+                </Button>
+                <Button Content="{l:Loc Gl_Import}" Command="{Binding ImportCommand}" Margin="0,0,8,0"/>
+                <Button Content="{l:Loc Gl_Export}" Command="{Binding ExportCommand}" Margin="0,0,8,0"/>
+                <Button Content="{l:Loc Ed_Save}" Style="{StaticResource PrimaryButton}" Command="{Binding SaveCommand}"/>
+            </StackPanel>
+            <StackPanel>
+                <TextBlock Text="{l:Loc Nav_Glossary}" Style="{StaticResource H1}"/>
+                <TextBlock Text="{l:Loc Gl_Subtitle}" Style="{StaticResource Subtle}" Margin="0,6,0,0" MaxWidth="620" HorizontalAlignment="Left"/>
+            </StackPanel>
+        </DockPanel>
+
+        <Border Grid.Row="1" Style="{StaticResource Card}" Margin="0,16,0,12" Padding="14,10">
+            <DockPanel>
+                <StackPanel DockPanel.Dock="Right" Orientation="Horizontal">
+                    <Button Content="{l:Loc Gl_UseGlobal}" Command="{Binding UseGlobalCommand}" Margin="0,0,8,0"/>
+                    <Button Content="{l:Loc Gl_OpenProject}" Command="{Binding OpenProjectCommand}"/>
+                </StackPanel>
+                <StackPanel VerticalAlignment="Center">
+                    <TextBlock Text="{Binding Scope}" FontWeight="SemiBold" TextTrimming="CharacterEllipsis"/>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Style="{StaticResource Subtle}" FontSize="12"><Run Text="{Binding Count, Mode=OneWay}"/> <Run Text="{l:Loc Gl_Entries}"/></TextBlock>
+                        <TextBlock Text="{l:Loc Gl_Unsaved}" Foreground="{StaticResource Warning}" FontSize="12" Margin="10,0,0,0"
+                                   Visibility="{Binding Dirty, Converter={StaticResource Vis}}"/>
+                    </StackPanel>
+                </StackPanel>
+            </DockPanel>
+        </Border>
+
+        <DataGrid Grid.Row="2" ItemsSource="{Binding Entries}" SelectionMode="Single" CellEditEnding="OnCellEditEnding">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="{l:Loc Gl_ColSource}" Binding="{Binding Source, UpdateSourceTrigger=PropertyChanged}" Width="2*"/>
+                <DataGridTextColumn Header="{l:Loc Gl_ColTarget}" Binding="{Binding Target, UpdateSourceTrigger=PropertyChanged}" Width="2*"/>
+                <DataGridTextColumn Header="{l:Loc Gl_ColLanguage}" Binding="{Binding TargetLanguage, UpdateSourceTrigger=PropertyChanged}" Width="110"/>
+                <DataGridTemplateColumn Header="{l:Loc Gl_ColProtected}" Width="110">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate><CheckBox IsChecked="{Binding Protected, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" Click="OnChanged"/></DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="{l:Loc Gl_ColCase}" Width="120">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate><CheckBox IsChecked="{Binding CaseSensitive, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" Click="OnChanged"/></DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="{l:Loc Gl_ColNotes}" Binding="{Binding Notes, UpdateSourceTrigger=PropertyChanged}" Width="2*"/>
+                <DataGridTemplateColumn Width="50">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Style="{StaticResource GhostButton}" ToolTip="{l:Loc Common_Remove}"
+                                    Command="{Binding DataContext.RemoveCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="{Binding}">
+                                <TextBlock Text="&#xE74D;" Style="{StaticResource Icon}"/>
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>

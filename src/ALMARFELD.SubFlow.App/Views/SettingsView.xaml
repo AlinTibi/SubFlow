@@ -1,0 +1,208 @@
+<UserControl x:Class="ALMARFELD.SubFlow.App.Views.SettingsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:l="clr-namespace:ALMARFELD.SubFlow.App.Services">
+    <UserControl.Resources>
+        <Style x:Key="Label" TargetType="TextBlock" BasedOn="{StaticResource Caption}">
+            <Setter Property="Margin" Value="0,10,0,4"/>
+        </Style>
+    </UserControl.Resources>
+    <Grid Margin="36,30,36,24">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <DockPanel Margin="0,0,0,18">
+            <Button DockPanel.Dock="Right" Style="{StaticResource PrimaryButton}" Command="{Binding SaveCommand}" VerticalAlignment="Center" Padding="22,9">
+                <TextBlock Text="{l:Loc Set_Save}" Foreground="White"/>
+            </Button>
+            <StackPanel>
+                <TextBlock Text="{l:Loc Nav_Settings}" Style="{StaticResource H1}"/>
+                <TextBlock Style="{StaticResource Subtle}" Margin="0,6,0,0"><Run Text="ALMARFELD SubFlow"/> <Run Text="{Binding Version, Mode=OneWay}"/> · almarfeld.com</TextBlock>
+            </StackPanel>
+        </DockPanel>
+
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="20"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel>
+                    <!-- Ollama -->
+                    <Border Style="{StaticResource Card}" Margin="0,0,0,16">
+                        <StackPanel>
+                            <TextBlock Text="{l:Loc Set_Ollama}" Style="{StaticResource H2}"/>
+                            <TextBlock Text="{l:Loc Set_OllamaHint}" Style="{StaticResource Subtle}" FontSize="12"/>
+                            <TextBlock Text="{l:Loc Set_Endpoint}" Style="{StaticResource Label}"/>
+                            <TextBox Text="{Binding OllamaEndpoint}"/>
+                            <UniformGrid Columns="4">
+                                <StackPanel Margin="0,0,8,0">
+                                    <TextBlock Text="{l:Loc Set_Temperature}" Style="{StaticResource Label}"/>
+                                    <TextBox Text="{Binding OllamaTemperature}"/>
+                                </StackPanel>
+                                <StackPanel Margin="0,0,8,0">
+                                    <TextBlock Text="{l:Loc Set_Context}" Style="{StaticResource Label}"/>
+                                    <TextBox Text="{Binding OllamaContext}"/>
+                                </StackPanel>
+                                <StackPanel Margin="0,0,8,0">
+                                    <TextBlock Text="{l:Loc Set_Batch}" Style="{StaticResource Label}"/>
+                                    <TextBox Text="{Binding OllamaBatch}"/>
+                                </StackPanel>
+                                <StackPanel>
+                                    <TextBlock Text="{l:Loc Set_Timeout}" Style="{StaticResource Label}"/>
+                                    <TextBox Text="{Binding OllamaTimeout}"/>
+                                </StackPanel>
+                            </UniformGrid>
+                            <StackPanel Orientation="Horizontal" Margin="0,12,0,0">
+                                <Button Content="{l:Loc Set_GetOllama}" Command="{Binding OpenUrlCommand}" CommandParameter="https://ollama.com/download" Margin="0,0,8,0"/>
+                                <Button Content="{l:Loc Set_BrowseModels}" Command="{Binding OpenUrlCommand}" CommandParameter="https://ollama.com/library"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+
+                    <!-- Cloud -->
+                    <Border Style="{StaticResource Card}" Margin="0,0,0,16">
+                        <StackPanel>
+                            <TextBlock Text="{l:Loc Set_Cloud}" Style="{StaticResource H2}"/>
+                            <Border Background="{StaticResource WarningSoft}" CornerRadius="7" Padding="10,8">
+                                <TextBlock Text="{l:Loc Set_CloudWarning}" TextWrapping="Wrap" FontSize="12"/>
+                            </Border>
+
+                            <TextBlock Text="OpenAI-compatible" FontWeight="SemiBold" Margin="0,14,0,0"/>
+                            <TextBlock Text="{l:Loc Set_Endpoint}" Style="{StaticResource Label}"/>
+                            <TextBox Text="{Binding OpenAiEndpoint}"/>
+                            <TextBlock Text="{l:Loc Set_Model}" Style="{StaticResource Label}"/>
+                            <TextBox Text="{Binding OpenAiModel}"/>
+                            <DockPanel>
+                                <TextBlock DockPanel.Dock="Right" Text="{Binding OpenAiKeyState}" Style="{StaticResource Label}"/>
+                                <TextBlock Text="{l:Loc Set_ApiKey}" Style="{StaticResource Label}"/>
+                            </DockPanel>
+                            <DockPanel>
+                                <Button DockPanel.Dock="Right" Style="{StaticResource GhostButton}" Content="{l:Loc Set_RemoveKey}" Tag="openai" Click="OnRemoveKey" Margin="6,0,0,0"/>
+                                <PasswordBox x:Name="OpenAiKey" PasswordChanged="OnKeyChanged" Tag="openai"/>
+                            </DockPanel>
+
+                            <TextBlock Text="DeepL" FontWeight="SemiBold" Margin="0,18,0,0"/>
+                            <DockPanel>
+                                <TextBlock DockPanel.Dock="Right" Text="{Binding DeepLKeyState}" Style="{StaticResource Label}"/>
+                                <TextBlock Text="{l:Loc Set_ApiKey}" Style="{StaticResource Label}"/>
+                            </DockPanel>
+                            <DockPanel>
+                                <Button DockPanel.Dock="Right" Style="{StaticResource GhostButton}" Content="{l:Loc Set_RemoveKey}" Tag="deepl" Click="OnRemoveKey" Margin="6,0,0,0"/>
+                                <PasswordBox x:Name="DeepLKey" PasswordChanged="OnKeyChanged" Tag="deepl"/>
+                            </DockPanel>
+                            <CheckBox Content="{l:Loc Set_DeepLFree}" IsChecked="{Binding DeepLFree}" Margin="0,8,0,0"/>
+
+                            <TextBlock Text="Google Cloud Translation" FontWeight="SemiBold" Margin="0,18,0,0"/>
+                            <DockPanel>
+                                <TextBlock DockPanel.Dock="Right" Text="{Binding GoogleKeyState}" Style="{StaticResource Label}"/>
+                                <TextBlock Text="{l:Loc Set_ApiKey}" Style="{StaticResource Label}"/>
+                            </DockPanel>
+                            <DockPanel>
+                                <Button DockPanel.Dock="Right" Style="{StaticResource GhostButton}" Content="{l:Loc Set_RemoveKey}" Tag="google" Click="OnRemoveKey" Margin="6,0,0,0"/>
+                                <PasswordBox x:Name="GoogleKey" PasswordChanged="OnKeyChanged" Tag="google"/>
+                            </DockPanel>
+                            <TextBlock Text="{l:Loc Set_KeyStorage}" Style="{StaticResource Subtle}" FontSize="11" Margin="0,10,0,0"/>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+
+                <StackPanel Grid.Column="2">
+                    <!-- Tools -->
+                    <Border Style="{StaticResource Card}" Margin="0,0,0,16">
+                        <StackPanel>
+                            <DockPanel>
+                                <Button DockPanel.Dock="Right" Style="{StaticResource GhostButton}" Command="{Binding RefreshToolsCommand}" ToolTip="{l:Loc Common_Refresh}">
+                                    <TextBlock Text="&#xE72C;" Style="{StaticResource Icon}"/>
+                                </Button>
+                                <TextBlock Text="{l:Loc Set_Tools}" Style="{StaticResource H2}"/>
+                            </DockPanel>
+                            <Border Background="{StaticResource Surface2}" CornerRadius="7" Padding="12,10">
+                                <TextBlock Text="{Binding ToolStatus}" TextWrapping="Wrap" FontSize="12" LineHeight="18"/>
+                            </Border>
+                            <TextBlock Text="{l:Loc Set_ToolsHint}" Style="{StaticResource Subtle}" FontSize="12" Margin="0,10,0,0"/>
+                            <TextBlock Text="FFmpeg (ffmpeg.exe)" Style="{StaticResource Label}"/>
+                            <DockPanel>
+                                <Button DockPanel.Dock="Right" Content="{l:Loc Common_Browse}" Command="{Binding BrowseToolCommand}" CommandParameter="ffmpeg" Margin="8,0,0,0"/>
+                                <TextBox Text="{Binding FfmpegPath}"/>
+                            </DockPanel>
+                            <TextBlock Text="FFprobe (ffprobe.exe)" Style="{StaticResource Label}"/>
+                            <DockPanel>
+                                <Button DockPanel.Dock="Right" Content="{l:Loc Common_Browse}" Command="{Binding BrowseToolCommand}" CommandParameter="ffprobe" Margin="8,0,0,0"/>
+                                <TextBox Text="{Binding FfprobePath}"/>
+                            </DockPanel>
+                            <TextBlock Text="mkvmerge (MKVToolNix)" Style="{StaticResource Label}"/>
+                            <DockPanel>
+                                <Button DockPanel.Dock="Right" Content="{l:Loc Common_Browse}" Command="{Binding BrowseToolCommand}" CommandParameter="mkvmerge" Margin="8,0,0,0"/>
+                                <TextBox Text="{Binding MkvMergePath}"/>
+                            </DockPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,12,0,0">
+                                <Button Content="FFmpeg" Command="{Binding OpenUrlCommand}" CommandParameter="https://ffmpeg.org/download.html" Margin="0,0,8,0"/>
+                                <Button Content="MKVToolNix" Command="{Binding OpenUrlCommand}" CommandParameter="https://mkvtoolnix.download/downloads.html"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+
+                    <!-- General -->
+                    <Border Style="{StaticResource Card}" Margin="0,0,0,16">
+                        <StackPanel>
+                            <TextBlock Text="{l:Loc Set_General}" Style="{StaticResource H2}"/>
+                            <TextBlock Text="{l:Loc Set_UiLanguage}" Style="{StaticResource Caption}"/>
+                            <ComboBox ItemsSource="{Binding UiLanguages}" SelectedValuePath="Key" DisplayMemberPath="Value" SelectedValue="{Binding UiLanguage}" Width="200" HorizontalAlignment="Left"/>
+                            <TextBlock Text="{l:Loc Set_UiLanguageHint}" Style="{StaticResource Subtle}" FontSize="11" Margin="0,6,0,0"/>
+                            <CheckBox Content="{l:Loc Set_Recursive}" IsChecked="{Binding RecursiveScan}" Margin="0,14,0,0"/>
+                        </StackPanel>
+                    </Border>
+
+                    <!-- Data & privacy -->
+                    <Border Style="{StaticResource Card}">
+                        <StackPanel>
+                            <TextBlock Text="{l:Loc Set_Privacy}" Style="{StaticResource H2}"/>
+                            <TextBlock Text="{l:Loc Set_PrivacyText}" Style="{StaticResource Subtle}" FontSize="12"/>
+                            <TextBlock Style="{StaticResource Subtle}" FontSize="12" Margin="0,12,0,0">
+                                <Run Text="{l:Loc Set_CacheEntries}"/> <Run Text="{Binding CacheCount, Mode=OneWay}" Foreground="{StaticResource Text}"/>
+                            </TextBlock>
+                            <WrapPanel Margin="0,10,0,0">
+                                <Button Content="{l:Loc Set_ClearCache}" Command="{Binding ClearCacheCommand}" Margin="0,0,8,6"/>
+                                <Button Content="{l:Loc Set_OpenData}" Command="{Binding OpenDataFolderCommand}" Margin="0,0,8,6"/>
+                                <Button Content="{l:Loc Set_OpenSettings}" Command="{Binding OpenSettingsFolderCommand}" Margin="0,0,8,6"/>
+                            </WrapPanel>
+                        </StackPanel>
+                    </Border>
+
+                    <!-- About & updates -->
+                    <Border Style="{StaticResource Card}" Margin="0,16,0,0">
+                        <StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,0,0,12">
+                                <Image Source="/Assets/subflow-64.png" Width="40" Height="40" RenderOptions.BitmapScalingMode="HighQuality"/>
+                                <StackPanel Margin="12,0,0,0" VerticalAlignment="Center">
+                                    <TextBlock FontSize="16" FontWeight="SemiBold"><Run Text="ALMARFELD SubFlow"/> <Run Text="{Binding Version, Mode=OneWay}" Foreground="{StaticResource TextMuted}"/></TextBlock>
+                                    <TextBlock Text="{Binding Copyright, Mode=OneWay}" Style="{StaticResource Subtle}" FontSize="12"/>
+                                </StackPanel>
+                            </StackPanel>
+                            <TextBlock Text="{l:Loc Set_AboutText}" Style="{StaticResource Subtle}" FontSize="12" TextWrapping="Wrap"/>
+                            <WrapPanel Margin="0,12,0,0">
+                                <Button Content="almarfeld.com" Command="{Binding OpenUrlCommand}" CommandParameter="{Binding Website}" Margin="0,0,8,6"/>
+                                <Button Content="GitHub" Command="{Binding OpenUrlCommand}" CommandParameter="{Binding RepositoryUrl}" Margin="0,0,8,6"
+                                        Visibility="{Binding HasRepository, Converter={StaticResource Vis}}"/>
+                                <Button Content="{l:Loc Set_ReportIssue}" Command="{Binding OpenUrlCommand}" CommandParameter="{Binding IssuesUrl}" Margin="0,0,8,6"
+                                        Visibility="{Binding HasRepository, Converter={StaticResource Vis}}"/>
+                                <Button Content="{l:Loc Set_Notices}" Command="{Binding OpenNoticesCommand}" Margin="0,0,8,6"/>
+                            </WrapPanel>
+                            <Separator Margin="0,8,0,12" Background="{StaticResource BorderBrush}"/>
+                            <CheckBox Content="{l:Loc Set_CheckUpdates}" IsChecked="{Binding CheckForUpdates}"/>
+                            <TextBlock Text="{l:Loc Set_CheckUpdatesHint}" Style="{StaticResource Subtle}" FontSize="11" Margin="22,4,0,0" TextWrapping="Wrap"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                                <Button Content="{l:Loc Set_CheckNow}" Command="{Binding CheckUpdatesCommand}"/>
+                                <TextBlock Text="{Binding UpdateStatus}" Style="{StaticResource Subtle}" FontSize="12" Margin="12,0,0,0" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+            </Grid>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

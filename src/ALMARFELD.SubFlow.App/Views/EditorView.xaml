@@ -1,0 +1,144 @@
+<UserControl x:Class="ALMARFELD.SubFlow.App.Views.EditorView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:l="clr-namespace:ALMARFELD.SubFlow.App.Services">
+    <Grid Margin="36,30,36,24">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <DockPanel>
+            <StackPanel DockPanel.Dock="Right" Orientation="Horizontal" VerticalAlignment="Center">
+                <Button Command="{Binding OpenVideoCommand}" Margin="0,0,8,0">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="&#xE714;" Style="{StaticResource Icon}" Margin="0,0,8,0"/>
+                        <TextBlock Text="{l:Loc Ed_OpenVideo}"/>
+                    </StackPanel>
+                </Button>
+                <Button Command="{Binding OpenFilesCommand}">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="&#xE8E5;" Style="{StaticResource Icon}" Margin="0,0,8,0"/>
+                        <TextBlock Text="{l:Loc Ed_OpenFiles}"/>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+            <StackPanel>
+                <TextBlock Text="{l:Loc Nav_Editor}" Style="{StaticResource H1}"/>
+                <TextBlock Text="{Binding Title}" Style="{StaticResource Subtle}" Margin="0,6,0,0"/>
+            </StackPanel>
+        </DockPanel>
+
+        <!-- Track pickers for videos -->
+        <Border Grid.Row="1" Style="{StaticResource Card}" Margin="0,16,0,0" Padding="14,10" Visibility="{Binding HasVideo, Converter={StaticResource Vis}}">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="{l:Loc Ed_OriginalTrack}" VerticalAlignment="Center" Margin="0,0,8,0" Foreground="{StaticResource TextMuted}"/>
+                <ComboBox ItemsSource="{Binding VideoTracks}" SelectedItem="{Binding SelectedOriginalTrack}" Width="220">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate><TextBlock><Run Text="#"/><Run Text="{Binding Index, Mode=OneWay}"/> <Run Text="{Binding Language, Mode=OneWay}"/> · <Run Text="{Binding Codec, Mode=OneWay}"/> <Run Text="{Binding Title, Mode=OneWay}"/></TextBlock></DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+                <TextBlock Text="{l:Loc Ed_TranslatedTrack}" VerticalAlignment="Center" Margin="18,0,8,0" Foreground="{StaticResource TextMuted}"/>
+                <ComboBox ItemsSource="{Binding VideoTracks}" SelectedItem="{Binding SelectedTranslatedTrack}" Width="220">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate><TextBlock><Run Text="#"/><Run Text="{Binding Index, Mode=OneWay}"/> <Run Text="{Binding Language, Mode=OneWay}"/> · <Run Text="{Binding Codec, Mode=OneWay}"/> <Run Text="{Binding Title, Mode=OneWay}"/></TextBlock></DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+                <Button Content="{l:Loc Ed_Load}" Command="{Binding LoadTracksCommand}" Margin="10,0,0,0"/>
+            </StackPanel>
+        </Border>
+
+        <!-- Tools -->
+        <Border Grid.Row="2" Style="{StaticResource Card}" Margin="0,12,0,12" Padding="14,10" IsEnabled="{Binding HasDocument}">
+            <WrapPanel>
+                <Grid Width="200" Margin="0,0,8,6">
+                    <TextBox Text="{Binding Search, UpdateSourceTrigger=PropertyChanged}" Padding="30,7,8,7"/>
+                    <TextBlock Text="&#xE721;" FontFamily="{StaticResource IconFont}" Foreground="{StaticResource TextMuted}" Margin="10,0,0,0" VerticalAlignment="Center" IsHitTestVisible="False"/>
+                </Grid>
+                <TextBox Text="{Binding Replace, UpdateSourceTrigger=PropertyChanged}" Width="170" Margin="0,0,8,6" ToolTip="{l:Loc Ed_ReplaceWith}"/>
+                <CheckBox Content="{l:Loc Ed_MatchCase}" IsChecked="{Binding MatchCase}" Margin="0,0,10,6" VerticalAlignment="Center"/>
+                <Button Content="{l:Loc Ed_FindNext}" Command="{Binding FindNextCommand}" Margin="0,0,8,6"/>
+                <Button Content="{l:Loc Ed_ReplaceAll}" Command="{Binding ReplaceAllCommand}" Margin="0,0,18,6"/>
+                <Button Content="{l:Loc Ed_ApplyGlossary}" Command="{Binding ApplyGlossaryCommand}" Margin="0,0,18,6"/>
+                <TextBlock Text="{l:Loc Ed_Languages}" VerticalAlignment="Center" Foreground="{StaticResource TextMuted}" Margin="0,0,6,6"/>
+                <ComboBox ItemsSource="{Binding Languages}" SelectedValuePath="Code" DisplayMemberPath="Name" SelectedValue="{Binding SourceLanguage}" Width="120" Margin="0,0,4,6"/>
+                <TextBlock Text="&#xE72A;" FontFamily="{StaticResource IconFont}" VerticalAlignment="Center" Margin="2,0,6,6" Foreground="{StaticResource TextMuted}"/>
+                <ComboBox ItemsSource="{Binding Languages}" SelectedValuePath="Code" DisplayMemberPath="Name" SelectedValue="{Binding TargetLanguage}" Width="120" Margin="0,0,0,6"/>
+            </WrapPanel>
+        </Border>
+
+        <!-- Grid -->
+        <Grid Grid.Row="3">
+            <Border Style="{StaticResource Card}" Visibility="{Binding HasDocument, Converter={StaticResource NotVis}}">
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" MaxWidth="460">
+                    <TextBlock Text="&#xE70F;" FontFamily="{StaticResource IconFont}" FontSize="44" HorizontalAlignment="Center" Foreground="{StaticResource Accent}"/>
+                    <TextBlock Text="{l:Loc Ed_EmptyTitle}" FontSize="18" FontWeight="SemiBold" HorizontalAlignment="Center" Margin="0,14,0,6"/>
+                    <TextBlock Text="{l:Loc Ed_EmptyHint}" Style="{StaticResource Subtle}" TextAlignment="Center"/>
+                </StackPanel>
+            </Border>
+            <DataGrid x:Name="Grid" ItemsSource="{Binding Rows}" SelectedItem="{Binding Selected}" SelectionMode="Single"
+                      Visibility="{Binding HasDocument, Converter={StaticResource Vis}}" CanUserSortColumns="False"
+                      SelectionChanged="OnSelectionChanged">
+                <DataGrid.RowStyle>
+                    <Style TargetType="DataGridRow">
+                        <Setter Property="Foreground" Value="{StaticResource Text}"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding IsMatch}" Value="True">
+                                <Setter Property="Background" Value="#22FBBF24"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </DataGrid.RowStyle>
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="#" Binding="{Binding Index}" IsReadOnly="True" Width="50"/>
+                    <DataGridTextColumn Header="{l:Loc Ed_ColTime}" Binding="{Binding Time}" IsReadOnly="True" Width="110"
+                                        ElementStyle="{StaticResource GridTextWrap}"/>
+                    <DataGridTextColumn Header="{l:Loc Ed_ColOriginal}" Binding="{Binding Original}" IsReadOnly="True" Width="*"
+                                        ElementStyle="{StaticResource GridTextWrap}"/>
+                    <DataGridTemplateColumn Header="{l:Loc Ed_ColTranslation}" Width="*">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Border Width="3" Background="{StaticResource Warning}" Margin="0,0,6,0" CornerRadius="1"
+                                            Visibility="{Binding IsModified, Converter={StaticResource Vis}}"/>
+                                    <TextBlock Text="{Binding Translation}" TextWrapping="Wrap"
+                                               FlowDirection="{Binding DataContext.IsRightToLeft, RelativeSource={RelativeSource AncestorType=DataGrid}, Converter={StaticResource Flow}}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                        <DataGridTemplateColumn.CellEditingTemplate>
+                            <DataTemplate>
+                                <TextBox Text="{Binding Translation, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource GridEditWrap}"
+                                         FlowDirection="{Binding DataContext.IsRightToLeft, RelativeSource={RelativeSource AncestorType=DataGrid}, Converter={StaticResource Flow}}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellEditingTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+
+        <!-- Preview + save -->
+        <Border Grid.Row="4" Style="{StaticResource Card}" Margin="0,12,0,0" Padding="14,10" IsEnabled="{Binding HasDocument}">
+            <DockPanel>
+                <StackPanel DockPanel.Dock="Right" Orientation="Horizontal" VerticalAlignment="Center">
+                    <Button Content="{l:Loc Ed_Save}" Style="{StaticResource PrimaryButton}" Command="{Binding SaveCommand}" Margin="0,0,8,0"/>
+                    <Button Content="{l:Loc Ed_SaveAs}" Command="{Binding SaveAsCommand}" Margin="0,0,8,0"/>
+                    <Button Content="{l:Loc Ed_ExportSrt}" Command="{Binding ExportSrtCommand}" Margin="0,0,8,0"/>
+                    <Button Content="{l:Loc Ed_SaveIntoVideo}" Command="{Binding SaveIntoVideoCommand}"/>
+                </StackPanel>
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Button Content="{l:Loc Ed_Preview}" Command="{Binding PreviewCommand}" Margin="0,0,8,0"/>
+                        <Button Content="{l:Loc Ed_UsePreview}" Command="{Binding UsePreviewCommand}" Margin="0,0,12,0"/>
+                        <TextBlock Text="{Binding Status}" Foreground="{StaticResource TextMuted}" VerticalAlignment="Center"/>
+                    </StackPanel>
+                    <TextBlock Text="{Binding Preview}" TextWrapping="Wrap" Margin="0,8,16,0" Foreground="{StaticResource Teal}"
+                               Visibility="{Binding Preview, Converter={StaticResource Vis}}"/>
+                </StackPanel>
+            </DockPanel>
+        </Border>
+    </Grid>
+</UserControl>

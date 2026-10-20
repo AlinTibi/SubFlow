@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="Common_Browse" xml:space="preserve"><value>Răsfoiește…</value></data>
+  <data name="Common_Cancel" xml:space="preserve"><value>Anulează</value></data>
+  <data name="Common_ClearAll" xml:space="preserve"><value>Golește tot</value></data>
+  <data name="Common_Refresh" xml:space="preserve"><value>Reîmprospătează</value></data>
+  <data name="Common_Remove" xml:space="preserve"><value>Elimină</value></data>
+  <data name="Common_ShowInFolder" xml:space="preserve"><value>Arată în folder</value></data>
+  <data name="Dash_Completed" xml:space="preserve"><value>Fișiere finalizate</value></data>
+  <data name="Dash_Errors" xml:space="preserve"><value>Erori</value></data>
+  <data name="Dash_FixFailed" xml:space="preserve"><value>Comanda s-a încheiat cu codul {0}. Detaliile sunt în fereastra de consolă.</value></data>
+  <data name="Dash_GoEngine" xml:space="preserve"><value>Alege motorul</value></data>
+  <data name="Dash_GoLanguages" xml:space="preserve"><value>Alege limbile</value></data>
+  <data name="Dash_GoStart" xml:space="preserve"><value>Pornește traducerea</value></data>
+  <data name="Dash_GoVideos" xml:space="preserve"><value>Adaugă videoclipuri</value></data>
+  <data name="Dash_Health" xml:space="preserve"><value>Verificare sistem</value></data>
+  <data name="Dash_HealthHelp" xml:space="preserve"><value>FFmpeg/FFprobe sunt necesare. Instalează-le (ex. winget install Gyan.FFmpeg) sau setează căile în Setări. Ollama e necesar doar pentru traducerea AI locală.</value></data>
+  <data name="Dash_Install" xml:space="preserve"><value>Instalează {0}</value></data>
+  <data name="Dash_InstallConfirm" xml:space="preserve"><value>SubFlow va instala {0} cu Windows Package Manager:
+
+winget install --id {1}
+
+O fereastră de consolă arată progresul; winget îți poate cere acolo să accepți acordurile pachetului și ale sursei.
+Licență: {2}
+
+Continui?</value></data>
+  <data name="Dash_Interrupted" xml:space="preserve"><value>Unele fișiere au fost întrerupte la închiderea SubFlow. Părțile deja traduse sunt salvate în cache.</value></data>
+  <data name="Dash_Languages" xml:space="preserve"><value>Limbi de traducere</value></data>
+  <data name="Dash_NoLanguages" xml:space="preserve"><value>Nicio limbă selectată</value></data>
+  <data name="Dash_NoModels" xml:space="preserve"><value>Ollama rulează, dar nu are încă niciun model.</value></data>
+  <data name="Dash_Ocr" xml:space="preserve"><value>OCR Windows (subtitrări imagine)</value></data>
+  <data name="Dash_OcrMissing" xml:space="preserve"><value>Nicio limbă OCR instalată. Adaugă o limbă cu OCR din Setări Windows → Oră și limbă.</value></data>
+  <data name="Dash_PrivacyCloud" xml:space="preserve"><value>Motor cloud: textul subtitrărilor este trimis furnizorului.</value></data>
+  <data name="Dash_PrivacyLocal" xml:space="preserve"><value>Procesare locală. Nimic nu părăsește acest PC.</value></data>
+  <data name="Dash_Progress" xml:space="preserve"><value>Progres curent</value></data>
+  <data name="Dash_PullConfirm" xml:space="preserve"><value>SubFlow va descărca modelul AI {0} cu Ollama (ollama pull {0}).
+
+Este o descărcare mare (aproximativ 5 GB), salvată de Ollama pe acest PC. Continui?</value></data>
+  <data name="Dash_PullModel" xml:space="preserve"><value>Descarcă {0}</value></data>
+  <data name="Dash_Resume" xml:space="preserve"><value>Reia</value></data>
+  <data name="Dash_StartOllama" xml:space="preserve"><value>Pornește Ollama</value></data>
+  <data name="Dash_Step1" xml:space="preserve"><value>Adaugă videoclipuri</value></data>
+  <data name="Dash_Step2" xml:space="preserve"><value>Alege limbile</value></data>
+  <data name="Dash_Step3" xml:space="preserve"><value>Alege motorul</value></data>
+  <data name="Dash_Step4" xml:space="preserve"><value>Pornește</value></data>
+  <data name="Dash_Subtitle" xml:space="preserve"><value>Tradu subtitrările unor colecții întregi de videoclipuri și adaugă-le ca piste noi — fără re-encodare.</value></data>
+  <data name="Dash_Title" xml:space="preserve"><value>Bun venit în SubFlow</value></data>
+  <data name="Dash_VideosLoaded" xml:space="preserve"><value>videoclipuri încărcate</value></data>
+  <data name="Dash_Waiting" xml:space="preserve"><value>Fișiere în așteptare</value></data>
+  <data name="Drop_Hint" xml:space="preserve"><value>Folderele sunt scanate recursiv pentru fișiere MKV, MP4, MOV, AVI și WebM.</value></data>
+  <data name="Drop_Title" xml:space="preserve"><value>Plasează videoclipuri sau foldere</value></data>
+  <data name="Ed_ApplyGlossary" xml:space="preserve"><value>Aplică glosarul</value></data>
+  <data name="Ed_ColOriginal" xml:space="preserve"><value>Original</value></data>
+  <data name="Ed_ColTime" xml:space="preserve"><value>Timp</value></data>
+  <data name="Ed_ColTranslation" xml:space="preserve"><value>Traducere (dublu-click pentru editare)</value></data>
+  <data name="Ed_EmptyHint" xml:space="preserve"><value>Deschide un video tradus și alege pistele, sau un fișier de subtitrare tradus împreună cu originalul. Sincronizarea nu se schimbă când editezi textul.</value></data>
+  <data name="Ed_EmptyTitle" xml:space="preserve"><value>Revizuiește și corectează traducerile</value></data>
+  <data name="Ed_ExportSrt" xml:space="preserve"><value>Exportă SRT…</value></data>
+  <data name="Ed_FindNext" xml:space="preserve"><value>Caută următorul</value></data>
+  <data name="Ed_GlossaryApplied" xml:space="preserve"><value>Glosar aplicat · linii modificate: {0}</value></data>
+  <data name="Ed_Languages" xml:space="preserve"><value>Limbi</value></data>
+  <data name="Ed_Load" xml:space="preserve"><value>Încarcă</value></data>
+  <data name="Ed_Loaded" xml:space="preserve"><value>{0} linii de subtitrare încărcate</value></data>
+  <data name="Ed_MatchCase" xml:space="preserve"><value>Potrivește majusculele</value></data>
+  <data name="Ed_Matches" xml:space="preserve"><value>Linii găsite: {0}</value></data>
+  <data name="Ed_NoMatches" xml:space="preserve"><value>Nicio potrivire</value></data>
+  <data name="Ed_NoOverwriteSource" xml:space="preserve"><value>Alege alt nume: videoclipul deschis nu este suprascris niciodată.</value></data>
+  <data name="Ed_NoTextTracks" xml:space="preserve"><value>Acest video nu are piste de subtitrare text.</value></data>
+  <data name="Ed_OpenFiles" xml:space="preserve"><value>Deschide fișiere subtitrare…</value></data>
+  <data name="Ed_OpenVideo" xml:space="preserve"><value>Deschide video…</value></data>
+  <data name="Ed_OriginalTrack" xml:space="preserve"><value>Original</value></data>
+  <data name="Ed_PickOriginal" xml:space="preserve"><value>Opțional: deschide fișierul de subtitrare original (Anulează pentru a sări)</value></data>
+  <data name="Ed_PickTranslated" xml:space="preserve"><value>Deschide fișierul de subtitrare tradus</value></data>
+  <data name="Ed_PickVideo" xml:space="preserve"><value>Deschide un video cu subtitrări</value></data>
+  <data name="Ed_Preview" xml:space="preserve"><value>Tradu linia selectată</value></data>
+  <data name="Ed_PreviewReady" xml:space="preserve"><value>Previzualizare gata. Verific-o, apoi apasă "Folosește previzualizarea".</value></data>
+  <data name="Ed_Remuxing" xml:space="preserve"><value>Se scrie MKV-ul nou (fără re-encodare)…</value></data>
+  <data name="Ed_ReplaceAll" xml:space="preserve"><value>Înlocuiește tot</value></data>
+  <data name="Ed_ReplaceWith" xml:space="preserve"><value>Înlocuiește cu</value></data>
+  <data name="Ed_Replaced" xml:space="preserve"><value>Înlocuire făcută · linii modificate: {0}</value></data>
+  <data name="Ed_Save" xml:space="preserve"><value>Salvează</value></data>
+  <data name="Ed_SaveAs" xml:space="preserve"><value>Salvează ca…</value></data>
+  <data name="Ed_SaveIntoVideo" xml:space="preserve"><value>Salvează în MKV nou…</value></data>
+  <data name="Ed_Saved" xml:space="preserve"><value>Salvat {0}</value></data>
+  <data name="Ed_TranslatedTrack" xml:space="preserve"><value>Traducere</value></data>
+  <data name="Ed_Translating" xml:space="preserve"><value>Se traduce…</value></data>
+  <data name="Ed_UsePreview" xml:space="preserve"><value>Folosește previzualizarea</value></data>
+  <data name="Ed_VideoOpened" xml:space="preserve"><value>{0} · piste text: {1}</value></data>
+  <data name="Err_NoApiKey" xml:space="preserve"><value>Nu există cheie API pentru acest motor. Adaug-o în Setări.</value></data>
+  <data name="Err_NoOllamaModel" xml:space="preserve"><value>Niciun model Ollama selectat. Pornește Ollama, instalează un model (de ex.: ollama pull qwen3:8b) și alege-l în pagina Traducere.</value></data>
+  <data name="Gl_Add" xml:space="preserve"><value>Adaugă termen</value></data>
+  <data name="Gl_ChooseProject" xml:space="preserve"><value>Alege folderul cu videoclipuri pentru acest glosar de proiect</value></data>
+  <data name="Gl_ColCase" xml:space="preserve"><value>Sensibil la majuscule</value></data>
+  <data name="Gl_ColLanguage" xml:space="preserve"><value>Doar pentru limba</value></data>
+  <data name="Gl_ColNotes" xml:space="preserve"><value>Note</value></data>
+  <data name="Gl_ColProtected" xml:space="preserve"><value>Protejat</value></data>
+  <data name="Gl_ColSource" xml:space="preserve"><value>Termen sursă</value></data>
+  <data name="Gl_ColTarget" xml:space="preserve"><value>Traducere (gol = păstrează)</value></data>
+  <data name="Gl_Discard" xml:space="preserve"><value>Renunți la modificările nesalvate ale glosarului?</value></data>
+  <data name="Gl_Entries" xml:space="preserve"><value>intrări</value></data>
+  <data name="Gl_Export" xml:space="preserve"><value>Exportă…</value></data>
+  <data name="Gl_Import" xml:space="preserve"><value>Importă…</value></data>
+  <data name="Gl_OpenProject" xml:space="preserve"><value>Glosar de proiect…</value></data>
+  <data name="Gl_ScopeGlobal" xml:space="preserve"><value>Glosar global · se aplică tuturor videoclipurilor</value></data>
+  <data name="Gl_ScopeProject" xml:space="preserve"><value>Glosar de proiect · {0}</value></data>
+  <data name="Gl_Subtitle" xml:space="preserve"><value>Nume și termeni pe care traducerea trebuie să-i păstreze sau să-i traducă fix. Termenii protejați se păstrează exact (ex. Kamehameha).</value></data>
+  <data name="Gl_Unsaved" xml:space="preserve"><value>Modificări nesalvate</value></data>
+  <data name="Gl_UseGlobal" xml:space="preserve"><value>Glosar global</value></data>
+  <data name="Hist_Clear" xml:space="preserve"><value>Șterge istoricul</value></data>
+  <data name="Hist_ClearConfirm" xml:space="preserve"><value>Ștergi istoricul? Fișierele rezultate nu sunt șterse.</value></data>
+  <data name="Hist_ColDuration" xml:space="preserve"><value>Durată</value></data>
+  <data name="Hist_ColEngine" xml:space="preserve"><value>Motor</value></data>
+  <data name="Hist_ColFile" xml:space="preserve"><value>Fișier</value></data>
+  <data name="Hist_ColLanguages" xml:space="preserve"><value>Limbi</value></data>
+  <data name="Hist_ColStatus" xml:space="preserve"><value>Stare</value></data>
+  <data name="Hist_ColWhen" xml:space="preserve"><value>Când</value></data>
+  <data name="Hist_Export" xml:space="preserve"><value>Exportă raport</value></data>
+  <data name="Hist_Subtitle" xml:space="preserve"><value>Toate fișierele procesate, salvate local pe acest computer.</value></data>
+  <data name="Main_CloseWhileRunning" xml:space="preserve"><value>Traducerea rulează încă. Închizi oricum? Fișierele neterminate pot fi reluate data viitoare.</value></data>
+  <data name="Main_UpdateAvailable" xml:space="preserve"><value>Actualizare disponibilă: {0}</value></data>
+  <data name="Nav_Dashboard" xml:space="preserve"><value>Panou</value></data>
+  <data name="Nav_Editor" xml:space="preserve"><value>Editor subtitrări</value></data>
+  <data name="Nav_Glossary" xml:space="preserve"><value>Glosar</value></data>
+  <data name="Nav_History" xml:space="preserve"><value>Istoric</value></data>
+  <data name="Nav_Queue" xml:space="preserve"><value>Coadă</value></data>
+  <data name="Nav_Settings" xml:space="preserve"><value>Setări</value></data>
+  <data name="Nav_Translation" xml:space="preserve"><value>Traducere</value></data>
+  <data name="Nav_Videos" xml:space="preserve"><value>Videoclipuri</value></data>
+  <data name="Queue_ClearFinished" xml:space="preserve"><value>Elimină finalizatele</value></data>
+  <data name="Queue_Done" xml:space="preserve"><value>gata</value></data>
+  <data name="Queue_Empty" xml:space="preserve"><value>Coada este goală. Adaugă videoclipuri și pornește o traducere.</value></data>
+  <data name="Queue_Eta" xml:space="preserve"><value>Aproximativ {0} rămas (estimare după fișierele terminate până acum: {1})</value></data>
+  <data name="Queue_Failed" xml:space="preserve"><value>eșuate</value></data>
+  <data name="Queue_Idle" xml:space="preserve"><value>Inactiv</value></data>
+  <data name="Queue_PauseResume" xml:space="preserve"><value>Pauză / reia</value></data>
+  <data name="Queue_Paused" xml:space="preserve"><value>Pauză (termină întâi pasul curent)</value></data>
+  <data name="Queue_Retry" xml:space="preserve"><value>Reîncearcă</value></data>
+  <data name="Queue_RetryFailed" xml:space="preserve"><value>Reîncearcă eșuatele</value></data>
+  <data name="Queue_Running" xml:space="preserve"><value>Rulează</value></data>
+  <data name="Queue_Skipped" xml:space="preserve"><value>omise</value></data>
+  <data name="Queue_Start" xml:space="preserve"><value>Pornește / reia</value></data>
+  <data name="Queue_Waiting" xml:space="preserve"><value>în așteptare</value></data>
+  <data name="Set_AboutText" xml:space="preserve"><value>Traduce subtitrările unor colecții întregi de videoclipuri cu AI local și le adaugă ca piste noi, fără re-encodare. Gratuit și open source, sub licența MIT.</value></data>
+  <data name="Set_ApiKey" xml:space="preserve"><value>Cheie API (lasă gol pentru a păstra cheia salvată)</value></data>
+  <data name="Set_Batch" xml:space="preserve"><value>Linii per cerere</value></data>
+  <data name="Set_BrowseModels" xml:space="preserve"><value>Biblioteca de modele</value></data>
+  <data name="Set_BrowseTool" xml:space="preserve"><value>Localizează programul</value></data>
+  <data name="Set_CacheEntries" xml:space="preserve"><value>Linii traduse în cache:</value></data>
+  <data name="Set_CheckNow" xml:space="preserve"><value>Verifică acum</value></data>
+  <data name="Set_CheckUpdates" xml:space="preserve"><value>Caută actualizări la pornirea SubFlow</value></data>
+  <data name="Set_CheckUpdatesHint" xml:space="preserve"><value>Întreabă GitHub care este ultima versiune. Nu se trimit date personale. Dezactivat implicit.</value></data>
+  <data name="Set_ClearCache" xml:space="preserve"><value>Golește cache-ul</value></data>
+  <data name="Set_ClearCacheConfirm" xml:space="preserve"><value>Golești cache-ul? Rulările viitoare vor traduce totul din nou.</value></data>
+  <data name="Set_Cloud" xml:space="preserve"><value>Traducere cloud (opțional)</value></data>
+  <data name="Set_CloudWarning" xml:space="preserve"><value>Motoarele cloud trimit textul subtitrărilor prin internet și pot genera costuri. SubFlow cere confirmare înainte de prima cerere din sesiune și nu le folosește niciodată fără știrea ta.</value></data>
+  <data name="Set_Context" xml:space="preserve"><value>Context (tokeni)</value></data>
+  <data name="Set_DeepLFree" xml:space="preserve"><value>Cheie DeepL API Free (api-free.deepl.com)</value></data>
+  <data name="Set_Endpoint" xml:space="preserve"><value>Adresă</value></data>
+  <data name="Set_General" xml:space="preserve"><value>General</value></data>
+  <data name="Set_GetOllama" xml:space="preserve"><value>Descarcă Ollama</value></data>
+  <data name="Set_InvalidEndpoint" xml:space="preserve"><value>Adresa Ollama trebuie să fie un URL http(s) valid, ex. http://127.0.0.1:11434</value></data>
+  <data name="Set_KeyNone" xml:space="preserve"><value>nesetată</value></data>
+  <data name="Set_KeyStorage" xml:space="preserve"><value>Cheile sunt criptate cu Windows DPAPI pentru contul tău Windows și nu apar niciodată în jurnale.</value></data>
+  <data name="Set_KeyStored" xml:space="preserve"><value>salvată (criptată)</value></data>
+  <data name="Set_Model" xml:space="preserve"><value>Model</value></data>
+  <data name="Set_Notices" xml:space="preserve"><value>Licențe terțe</value></data>
+  <data name="Set_Ollama" xml:space="preserve"><value>Ollama (AI local)</value></data>
+  <data name="Set_OllamaHint" xml:space="preserve"><value>SubFlow folosește modelele deja instalate și nu descarcă niciodată modele singur.</value></data>
+  <data name="Set_OpenData" xml:space="preserve"><value>Deschide folderul de date</value></data>
+  <data name="Set_OpenSettings" xml:space="preserve"><value>Deschide folderul de setări</value></data>
+  <data name="Set_Privacy" xml:space="preserve"><value>Confidențialitate și date</value></data>
+  <data name="Set_PrivacyText" xml:space="preserve"><value>Fără telemetrie, fără conturi, fără reclame. Videoclipurile nu sunt încărcate nicăieri. Istoricul și cache-ul traducerilor sunt stocate doar pe acest computer.</value></data>
+  <data name="Set_Recursive" xml:space="preserve"><value>Scanează subfolderele la adăugarea folderelor</value></data>
+  <data name="Set_RemoveKey" xml:space="preserve"><value>Elimină</value></data>
+  <data name="Set_ReportIssue" xml:space="preserve"><value>Raportează o problemă</value></data>
+  <data name="Set_Save" xml:space="preserve"><value>Salvează setările</value></data>
+  <data name="Set_Saved" xml:space="preserve"><value>Setări salvate.</value></data>
+  <data name="Set_SavedRestart" xml:space="preserve"><value>Setări salvate. Repornește SubFlow pentru a schimba limba interfeței.</value></data>
+  <data name="Set_Temperature" xml:space="preserve"><value>Temperatură</value></data>
+  <data name="Set_Timeout" xml:space="preserve"><value>Timp limită (s)</value></data>
+  <data name="Set_Tools" xml:space="preserve"><value>Unelte video</value></data>
+  <data name="Set_ToolsHint" xml:space="preserve"><value>SubFlow nu include FFmpeg sau MKVToolNix. Sunt detectate automat (PATH, WinGet, foldere implicite); setează o cale doar dacă detecția eșuează.</value></data>
+  <data name="Set_UiLanguage" xml:space="preserve"><value>Limba interfeței</value></data>
+  <data name="Set_UiLanguageHint" xml:space="preserve"><value>Schimbă doar meniurile aplicației, nu limbile subtitrărilor.</value></data>
+  <data name="Set_UpdateAvailable" xml:space="preserve"><value>Versiunea {0} este disponibilă. Apasă din nou pentru pagina de descărcare.</value></data>
+  <data name="Set_UpdateChecking" xml:space="preserve"><value>Se verifică…</value></data>
+  <data name="Set_UpdateLatest" xml:space="preserve"><value>Ai ultima versiune ({0}).</value></data>
+  <data name="Set_UpdateUnknown" xml:space="preserve"><value>Nu am putut verifica actualizările. Versiunile sunt publicate pe almarfeld.com.</value></data>
+  <data name="Side_Engine" xml:space="preserve"><value>Motor activ</value></data>
+  <data name="Status_Cancelled" xml:space="preserve"><value>Anulat</value></data>
+  <data name="Status_Completed" xml:space="preserve"><value>Finalizat</value></data>
+  <data name="Status_CompletedWithWarnings" xml:space="preserve"><value>Finalizat · avertismente</value></data>
+  <data name="Status_Failed" xml:space="preserve"><value>Eșuat</value></data>
+  <data name="Status_Interrupted" xml:space="preserve"><value>Întrerupt</value></data>
+  <data name="Status_Pending" xml:space="preserve"><value>În așteptare</value></data>
+  <data name="Status_Running" xml:space="preserve"><value>Se procesează</value></data>
+  <data name="Status_Skipped" xml:space="preserve"><value>Omis</value></data>
+  <data name="Tr_AutoDetect" xml:space="preserve"><value>Auto (etichetă pistă / detecție)</value></data>
+  <data name="Tr_ChooseOutput" xml:space="preserve"><value>Alege folderul rezultat</value></data>
+  <data name="Tr_Cloud" xml:space="preserve"><value>CLOUD</value></data>
+  <data name="Tr_CloudConsent" xml:space="preserve"><value>{0} este un serviciu online. Textul subtitrărilor (nu video-ul sau audio-ul) va fi trimis prin internet pentru traducere.
+
+Continui?</value></data>
+  <data name="Tr_CloudConsentTitle" xml:space="preserve"><value>Trimiți textul subtitrărilor către un serviciu cloud?</value></data>
+  <data name="Tr_CloudPaid" xml:space="preserve"><value>Acesta este un API plătit: cererile pot fi facturate în contul tău.</value></data>
+  <data name="Tr_Concurrency" xml:space="preserve"><value>Fișiere în paralel</value></data>
+  <data name="Tr_ConcurrencyHint" xml:space="preserve"><value>Cu un singur GPU local, 1–2 este de obicei cel mai rapid. Motoarele cloud suportă mai multe.</value></data>
+  <data name="Tr_Default" xml:space="preserve"><value>Implicit</value></data>
+  <data name="Tr_Engine" xml:space="preserve"><value>Motor de traducere</value></data>
+  <data name="Tr_ExistingOutput" xml:space="preserve"><value>Dacă fișierul rezultat există deja</value></data>
+  <data name="Tr_ExistingTrack" xml:space="preserve"><value>Dacă videoclipul are deja subtitrare într-o limbă țintă</value></data>
+  <data name="Tr_Free" xml:space="preserve"><value>GRATUIT · LOCAL</value></data>
+  <data name="Tr_KeyMissing" xml:space="preserve"><value>Nicio cheie API salvată.</value></data>
+  <data name="Tr_KeyStored" xml:space="preserve"><value>Cheie API salvată în siguranță.</value></data>
+  <data name="Tr_MakeDefault" xml:space="preserve"><value>Setează prima pistă nouă ca subtitrare implicită</value></data>
+  <data name="Tr_Model" xml:space="preserve"><value>Model Ollama</value></data>
+  <data name="Tr_NoTargets" xml:space="preserve"><value>Selectează una sau mai multe limbi țintă.</value></data>
+  <data name="Tr_NoteCloud" xml:space="preserve"><value>{0}: textul subtitrărilor (nu video-ul) este trimis la {1}. Pot apărea costuri pe contul tău. Configurează cheile în Setări.</value></data>
+  <data name="Tr_NoteOllama" xml:space="preserve"><value>Rulează integral pe acest computer: fără internet, fără costuri, nicio dată nu părăsește PC-ul. Calitatea și limbile acoperite depind de modelul ales.</value></data>
+  <data name="Tr_NoteOpenAiLocal" xml:space="preserve"><value>Server local compatibil OpenAI la {0} (model {1}). Textul rămâne pe acest computer.</value></data>
+  <data name="Tr_OllamaChecking" xml:space="preserve"><value>Se verifică Ollama…</value></data>
+  <data name="Tr_OllamaNoModels" xml:space="preserve"><value>Ollama rulează, dar nu are instalat niciun model potrivit. Instalează unul, de ex. 'ollama pull qwen3:8b'. Sugestii: {0}</value></data>
+  <data name="Tr_OllamaOffline" xml:space="preserve"><value>Ollama nu rulează.</value></data>
+  <data name="Tr_OllamaReady" xml:space="preserve"><value>Ollama {0} · modele instalate: {1}</value></data>
+  <data name="Tr_OutBoth" xml:space="preserve"><value>MKV + fișiere subtitrare</value></data>
+  <data name="Tr_OutFiles" xml:space="preserve"><value>Doar fișiere subtitrare</value></data>
+  <data name="Tr_OutMkv" xml:space="preserve"><value>MKV cu piste noi</value></data>
+  <data name="Tr_OutOverwrite" xml:space="preserve"><value>Suprascrie rezultatul anterior (niciodată originalul)</value></data>
+  <data name="Tr_OutRename" xml:space="preserve"><value>Creează o copie numerotată</value></data>
+  <data name="Tr_OutSkip" xml:space="preserve"><value>Omite videoclipul</value></data>
+  <data name="Tr_Output" xml:space="preserve"><value>Rezultat</value></data>
+  <data name="Tr_OutputDefault" xml:space="preserve"><value>Implicit: un folder "SubFlow Output" în fiecare folder importat</value></data>
+  <data name="Tr_OutputFolder" xml:space="preserve"><value>Folder rezultat</value></data>
+  <data name="Tr_PreserveStructure" xml:space="preserve"><value>Păstrează structura folderelor</value></data>
+  <data name="Tr_ReplaceConfirm" xml:space="preserve"><value>Pistele existente în limbile selectate vor fi excluse din fișierele NOI și înlocuite cu traducerea AI. Videoclipurile originale nu sunt modificate. Continui?</value></data>
+  <data name="Tr_SkippedVideos" xml:space="preserve"><value>Videoclipuri fără subtitrări utilizabile, neadăugate în coadă: {0}.</value></data>
+  <data name="Tr_Source" xml:space="preserve"><value>Limba subtitrării originale</value></data>
+  <data name="Tr_SourceHint" xml:space="preserve"><value>Auto folosește eticheta de limbă a pistei sau detectează limba când eticheta lipsește și detecția e sigură.</value></data>
+  <data name="Tr_Start" xml:space="preserve"><value>Pornește traducerea</value></data>
+  <data name="Tr_Subtitle" xml:space="preserve"><value>Alege limba sursă și limbile țintă, motorul AI și unde se salvează rezultatele.</value></data>
+  <data name="Tr_Targets" xml:space="preserve"><value>Tradu în</value></data>
+  <data name="Tr_TargetsCount" xml:space="preserve"><value>Limbi selectate: {0} · fiecare este tradusă direct din sursă</value></data>
+  <data name="Tr_TrackKeepBoth" xml:space="preserve"><value>Tradu oricum și păstrează ambele piste</value></data>
+  <data name="Tr_TrackReplace" xml:space="preserve"><value>Înlocuiește pista existentă în fișierul nou</value></data>
+  <data name="Tr_TrackSkip" xml:space="preserve"><value>Omite limba respectivă (recomandat)</value></data>
+  <data name="Tr_VideoSummary" xml:space="preserve"><value>{0} din {1} videoclipuri pregătite pentru traducere</value></data>
+  <data name="Track_File" xml:space="preserve"><value>fișier</value></data>
+  <data name="Track_ImageOcr" xml:space="preserve"><value>Imagine · citită cu OCR</value></data>
+  <data name="Track_ImageUnsupported" xml:space="preserve"><value>Imagine · nesuportată (doar PGS)</value></data>
+  <data name="Track_Translatable" xml:space="preserve"><value>Traductibilă</value></data>
+  <data name="Track_Unsupported" xml:space="preserve"><value>Nesuportată</value></data>
+  <data name="Video_ImageOnly" xml:space="preserve"><value>Doar subtitrări imagine</value></data>
+  <data name="Video_NoSubs" xml:space="preserve"><value>Fișierul nu conține piste de subtitrare.</value></data>
+  <data name="Video_NoSubsShort" xml:space="preserve"><value>Fără subtitrări</value></data>
+  <data name="Video_Ready" xml:space="preserve"><value>Pregătit</value></data>
+  <data name="Video_ReadyOcr" xml:space="preserve"><value>Pregătit · OCR</value></data>
+  <data name="Video_ReadySidecar" xml:space="preserve"><value>Pregătit · fișier subtitrare</value></data>
+  <data name="Video_Scanning" xml:space="preserve"><value>Se scanează…</value></data>
+  <data name="Video_Unreadable" xml:space="preserve"><value>Ilizibil</value></data>
+  <data name="Videos_AddFiles" xml:space="preserve"><value>Adaugă fișiere</value></data>
+  <data name="Videos_AddFolder" xml:space="preserve"><value>Adaugă folder</value></data>
+  <data name="Videos_EmptyHint" xml:space="preserve"><value>SubFlow scanează fiecare videoclip, detectează pistele de subtitrare și arată care pot fi traduse. Fișierele originale nu sunt modificate niciodată.</value></data>
+  <data name="Videos_EmptyTitle" xml:space="preserve"><value>Trage aici un folder cu videoclipuri</value></data>
+  <data name="Videos_LanguagesFound" xml:space="preserve"><value>Limbi de subtitrare găsite:</value></data>
+  <data name="Videos_Problems" xml:space="preserve"><value>necesită atenție</value></data>
+  <data name="Videos_SelectHint" xml:space="preserve"><value>Selectează un videoclip pentru a vedea pistele de subtitrare.</value></data>
+  <data name="Videos_SubtitleTracks" xml:space="preserve"><value>Piste de subtitrare</value></data>
+  <data name="Videos_Total" xml:space="preserve"><value>videoclipuri</value></data>
+  <data name="Videos_WithText" xml:space="preserve"><value>gata de tradus</value></data>
+</root>

@@ -1,0 +1,133 @@
+<UserControl x:Class="ALMARFELD.SubFlow.App.Views.VideosView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:l="clr-namespace:ALMARFELD.SubFlow.App.Services">
+    <Grid Margin="36,30,36,24">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="360"/>
+        </Grid.ColumnDefinitions>
+
+        <DockPanel Grid.ColumnSpan="2">
+            <StackPanel DockPanel.Dock="Right" Orientation="Horizontal" VerticalAlignment="Center">
+                <Button Command="{Binding AddFolderCommand}" Style="{StaticResource PrimaryButton}" Margin="0,0,8,0">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="&#xE8F4;" Style="{StaticResource Icon}" Margin="0,0,8,0"/>
+                        <TextBlock Text="{l:Loc Videos_AddFolder}" Foreground="White"/>
+                    </StackPanel>
+                </Button>
+                <Button Command="{Binding AddFilesCommand}" Margin="0,0,8,0">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="&#xE710;" Style="{StaticResource Icon}" Margin="0,0,8,0"/>
+                        <TextBlock Text="{l:Loc Videos_AddFiles}"/>
+                    </StackPanel>
+                </Button>
+                <Button Command="{Binding RemoveCommand}" CommandParameter="{Binding SelectedItems, ElementName=List}" Margin="0,0,8,0" Content="{l:Loc Common_Remove}"/>
+                <Button Command="{Binding ClearCommand}" Style="{StaticResource GhostButton}" Content="{l:Loc Common_ClearAll}"/>
+            </StackPanel>
+            <StackPanel>
+                <TextBlock Text="{l:Loc Nav_Videos}" Style="{StaticResource H1}"/>
+                <TextBlock Style="{StaticResource Subtle}" Margin="0,6,0,0">
+                    <Run Text="{Binding Count, Mode=OneWay}"/> <Run Text="{l:Loc Videos_Total}"/> ·
+                    <Run Text="{Binding ReadyCount, Mode=OneWay}" Foreground="{StaticResource Success}"/> <Run Text="{l:Loc Videos_WithText}"/> ·
+                    <Run Text="{Binding ProblemCount, Mode=OneWay}" Foreground="{StaticResource Warning}"/> <Run Text="{l:Loc Videos_Problems}"/>
+                </TextBlock>
+            </StackPanel>
+        </DockPanel>
+
+        <TextBlock Grid.Row="1" Grid.ColumnSpan="2" Margin="0,10,0,14" Style="{StaticResource Subtle}"
+                   Visibility="{Binding LanguagesSummary, Converter={StaticResource Vis}}">
+            <Run Text="{l:Loc Videos_LanguagesFound}"/> <Run Text="{Binding LanguagesSummary, Mode=OneWay}" Foreground="{StaticResource Text}"/>
+        </TextBlock>
+
+        <!-- Empty state / drop zone -->
+        <Border Grid.Row="2" BorderBrush="{StaticResource Surface3}" BorderThickness="2" CornerRadius="12" Margin="0,14,0,0"
+                Visibility="{Binding IsEmpty, Converter={StaticResource Vis}}" Background="{StaticResource Surface}">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" MaxWidth="480">
+                <TextBlock Text="&#xE8B7;" FontFamily="{StaticResource IconFont}" FontSize="52" HorizontalAlignment="Center" Foreground="{StaticResource Accent}"/>
+                <TextBlock Text="{l:Loc Videos_EmptyTitle}" FontSize="20" FontWeight="SemiBold" Margin="0,16,0,6" HorizontalAlignment="Center"/>
+                <TextBlock Text="{l:Loc Videos_EmptyHint}" Style="{StaticResource Subtle}" TextAlignment="Center"/>
+                <TextBlock Text="MKV · MP4 · MOV · AVI · WebM" Foreground="{StaticResource TextFaint}" Margin="0,12,0,0" HorizontalAlignment="Center"/>
+            </StackPanel>
+        </Border>
+
+        <!-- Video list -->
+        <Border Grid.Row="2" Style="{StaticResource Card}" Padding="6" Margin="0,0,14,0"
+                Visibility="{Binding IsEmpty, Converter={StaticResource NotVis}}">
+            <ListBox x:Name="List" ItemsSource="{Binding Entries}" SelectedItem="{Binding Selected}" SelectionMode="Extended">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="&#xE714;" FontFamily="{StaticResource IconFont}" Foreground="{StaticResource TextMuted}" Margin="2,2,12,0" VerticalAlignment="Top"/>
+                            <StackPanel Grid.Column="1">
+                                <TextBlock Text="{Binding FileName}" TextTrimming="CharacterEllipsis" FontWeight="SemiBold"/>
+                                <TextBlock Text="{Binding Summary}" Style="{StaticResource Subtle}" FontSize="12" TextTrimming="CharacterEllipsis" TextWrapping="NoWrap" Margin="0,2,0,0"/>
+                            </StackPanel>
+                            <Border Grid.Column="2" Style="{StaticResource Pill}" Margin="10,0,0,0" x:Name="Pill" Background="{StaticResource SuccessSoft}">
+                                <TextBlock Text="{Binding State}" FontSize="11" x:Name="PillText" Foreground="{StaticResource Success}"/>
+                            </Border>
+                        </Grid>
+                        <DataTemplate.Triggers>
+                            <DataTrigger Binding="{Binding HasError}" Value="True">
+                                <Setter TargetName="Pill" Property="Background" Value="{StaticResource WarningSoft}"/>
+                                <Setter TargetName="PillText" Property="Foreground" Value="{StaticResource Warning}"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding IsReady}" Value="False">
+                                <Setter TargetName="Pill" Property="Background" Value="{StaticResource Surface3}"/>
+                                <Setter TargetName="PillText" Property="Foreground" Value="{StaticResource TextMuted}"/>
+                            </DataTrigger>
+                        </DataTemplate.Triggers>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Border>
+
+        <!-- Details -->
+        <Border Grid.Row="2" Grid.Column="1" Style="{StaticResource Card}" Visibility="{Binding IsEmpty, Converter={StaticResource NotVis}}">
+            <Grid>
+                <TextBlock Text="{l:Loc Videos_SelectHint}" Style="{StaticResource Subtle}" VerticalAlignment="Center" HorizontalAlignment="Center"
+                           Visibility="{Binding Selected, Converter={StaticResource NotVis}}"/>
+                <ScrollViewer VerticalScrollBarVisibility="Auto" Visibility="{Binding Selected, Converter={StaticResource Vis}}">
+                    <StackPanel DataContext="{Binding Selected}">
+                        <TextBlock Text="{Binding FileName}" FontWeight="SemiBold" FontSize="15" TextWrapping="Wrap"/>
+                        <TextBlock Text="{Binding Folder}" Style="{StaticResource Subtle}" FontSize="12" Margin="0,4,0,0"/>
+                        <TextBlock Text="{Binding Info}" Style="{StaticResource Subtle}" FontSize="12" Margin="0,4,0,16"/>
+                        <TextBlock Text="{l:Loc Videos_SubtitleTracks}" Style="{StaticResource H2}"/>
+                        <ItemsControl ItemsSource="{Binding Tracks}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Border Background="{StaticResource Surface2}" CornerRadius="7" Padding="10,8" Margin="0,0,0,6">
+                                        <StackPanel>
+                                            <DockPanel>
+                                                <TextBlock DockPanel.Dock="Right" Text="{Binding Support}" FontSize="11" x:Name="Sup" Foreground="{StaticResource Success}"/>
+                                                <TextBlock FontWeight="SemiBold"><Run Text="{Binding Ref, Mode=OneWay}"/>  <Run Text="{Binding Language, Mode=OneWay}"/> · <Run Text="{Binding Codec, Mode=OneWay}"/></TextBlock>
+                                            </DockPanel>
+                                            <TextBlock Text="{Binding Title}" Style="{StaticResource Subtle}" FontSize="12"/>
+                                            <TextBlock Text="{Binding Flags}" Foreground="{StaticResource TextFaint}" FontSize="11"/>
+                                        </StackPanel>
+                                    </Border>
+                                    <DataTemplate.Triggers>
+                                        <DataTrigger Binding="{Binding IsUsable}" Value="False">
+                                            <Setter TargetName="Sup" Property="Foreground" Value="{StaticResource Warning}"/>
+                                        </DataTrigger>
+                                    </DataTemplate.Triggers>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                        <TextBlock Text="{Binding Summary}" Style="{StaticResource Subtle}" Visibility="{Binding HasError, Converter={StaticResource Vis}}" Margin="0,8,0,0"/>
+                    </StackPanel>
+                </ScrollViewer>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

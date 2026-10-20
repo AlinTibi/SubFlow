@@ -1,0 +1,20 @@
+<Application x:Class="ALMARFELD.SubFlow.App.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:s="clr-namespace:ALMARFELD.SubFlow.App.Services"
+             ShutdownMode="OnMainWindowClose">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Themes/Dark.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <s:BoolToVisibilityConverter x:Key="Vis"/>
+            <s:BoolToVisibilityConverter x:Key="NotVis" Invert="True"/>
+            <s:InverseBoolConverter x:Key="Not"/>
+            <s:EnumEqualsConverter x:Key="EnumEq"/>
+            <s:StatusBrushConverter x:Key="StatusBrush"/>
+            <s:StatusTextConverter x:Key="StatusText"/>
+            <s:FlowDirectionConverter x:Key="Flow"/>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

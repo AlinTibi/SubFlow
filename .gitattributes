@@ -1,0 +1,16 @@
+# Normalise text files; Windows checkouts get CRLF.
+* text=auto
+
+*.cs      text diff=csharp
+*.xaml    text
+*.csproj  text
+*.sln     text eol=crlf
+*.ps1     text eol=crlf
+*.iss     text eol=crlf
+*.yml     text eol=lf
+*.md      text
+
+*.png     binary
+*.ico     binary
+*.jpg     binary
+*.webp    binary

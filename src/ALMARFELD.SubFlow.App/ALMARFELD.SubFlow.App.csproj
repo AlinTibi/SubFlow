@@ -1,0 +1,38 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows10.0.19041.0</TargetFramework>
+    <SupportedOSPlatformVersion>10.0.17763.0</SupportedOSPlatformVersion>
+    <UseWPF>true</UseWPF>
+    <RootNamespace>ALMARFELD.SubFlow.App</RootNamespace>
+    <AssemblyName>SubFlow</AssemblyName>
+    <AssemblyTitle>ALMARFELD SubFlow</AssemblyTitle>
+    <Description>ALMARFELD SubFlow — AI subtitle translator and video language manager</Description>
+    <ApplicationIcon>Assets\subflow.ico</ApplicationIcon>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <SelfContained>false</SelfContained>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Using Include="System.IO" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <AssemblyMetadata Include="RepositoryUrl" Value="$(RepositoryUrl)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\subflow-256.png" />
+    <Resource Include="Assets\subflow-64.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ALMARFELD.SubFlow.Core\ALMARFELD.SubFlow.Core.csproj" />
+    <ProjectReference Include="..\ALMARFELD.SubFlow.Infrastructure\ALMARFELD.SubFlow.Infrastructure.csproj" />
+    <ProjectReference Include="..\ALMARFELD.SubFlow.Translation\ALMARFELD.SubFlow.Translation.csproj" />
+    <ProjectReference Include="..\ALMARFELD.SubFlow.Ocr\ALMARFELD.SubFlow.Ocr.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,37 @@
+name: Bug report
+description: Something does not work as expected.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting! Please do **not** attach copyrighted videos. A short description of the file
+        (container, subtitle tracks from the Videos page) is enough.
+  - type: input
+    id: version
+    attributes:
+      label: SubFlow version
+      description: Settings → About.
+      placeholder: "1.1.0"
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: What did you do, what did you expect, and what happened instead?
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Windows version, translation engine and model, FFmpeg version (Dashboard → System check).
+      placeholder: |
+        Windows 11 24H2, Ollama qwen3:8b, FFmpeg 7.1
+  - type: textarea
+    id: log
+    attributes:
+      label: Log
+      description: The relevant part of the log in %LOCALAPPDATA%\ALMARFELD\SubFlow\logs, if any.
+      render: text

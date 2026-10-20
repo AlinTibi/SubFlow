@@ -1,0 +1,36 @@
+root = true
+
+[*]
+charset = utf-8
+end_of_line = crlf
+insert_final_newline = true
+indent_style = space
+indent_size = 4
+trim_trailing_whitespace = true
+
+[*.{csproj,props,targets,xml,xaml,resx,json,yml,yaml}]
+indent_size = 2
+
+[*.md]
+trim_trailing_whitespace = false
+
+[*.cs]
+csharp_style_namespace_declarations = file_scoped:warning
+csharp_prefer_braces = when_multiline:suggestion
+dotnet_sort_system_directives_first = true
+
+# Public API naming chosen deliberately: MediaStream is a media stream, IJobStore.Get is a lookup.
+dotnet_diagnostic.CA1711.severity = none
+dotnet_diagnostic.CA1716.severity = none
+
+[src/ALMARFELD.SubFlow.App/**.cs]
+# WPF bindings need instance properties even when they read no instance state.
+dotnet_diagnostic.CA1822.severity = none
+# View models and the App object live for the whole process; their disposables die with it.
+dotnet_diagnostic.CA1001.severity = none
+
+[tests/**.cs]
+# Test names use underscores (Method_Condition_Result) and helpers expose simple fields.
+dotnet_diagnostic.CA1707.severity = none
+dotnet_diagnostic.CA1051.severity = none
+dotnet_diagnostic.CA1822.severity = none

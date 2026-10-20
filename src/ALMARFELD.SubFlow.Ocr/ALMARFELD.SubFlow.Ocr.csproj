@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <!-- Windows.Media.Ocr ships with Windows 10/11; no OCR engine or model is bundled. -->
+    <TargetFramework>net8.0-windows10.0.19041.0</TargetFramework>
+    <SupportedOSPlatformVersion>10.0.17763.0</SupportedOSPlatformVersion>
+    <RootNamespace>ALMARFELD.SubFlow.Ocr</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ALMARFELD.SubFlow.Core\ALMARFELD.SubFlow.Core.csproj" />
+    <ProjectReference Include="..\ALMARFELD.SubFlow.Infrastructure\ALMARFELD.SubFlow.Infrastructure.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <InternalsVisibleTo Include="ALMARFELD.SubFlow.Tests" />
+  </ItemGroup>
+</Project>

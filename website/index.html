@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ALMARFELD SubFlow: AI subtitle translator for video libraries</title>
+  <meta name="description" content="Translate the subtitles of entire video libraries with local AI and add them as new tracks without re-encoding. Free, open source, private. Windows 10/11.">
+  <meta property="og:title" content="ALMARFELD SubFlow">
+  <meta property="og:description" content="Translate the subtitles of entire video libraries with local AI. No re-encoding, no upload, free and open source.">
+  <meta property="og:image" content="images/dashboard.png">
+  <meta property="og:type" content="website">
+  <link rel="canonical" href="https://almarfeld.com/software/subflow/">
+  <meta property="og:url" content="https://almarfeld.com/software/subflow/">
+  <meta name="theme-color" content="#0D1017">
+  <link rel="icon" href="images/favicon.ico">
+  <style>
+    :root {
+      --bg0: #0D1017; --bg1: #121621; --surface: #181D29; --surface2: #202636; --border: #2B3245;
+      --text: #E7EAF1; --muted: #98A1B4; --faint: #6B748A;
+      --accent: #3D8BFF; --accent-hover: #5A9DFF; --teal: #2DD4BF; --violet: #8B5CF6; --success: #34D399;
+      --radius: 14px;
+      --grad: linear-gradient(90deg, var(--teal), var(--accent), var(--violet));
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; background: var(--bg0); color: var(--text);
+      font: 16px/1.6 "Segoe UI Variable Text", "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--accent-hover); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .wrap { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+
+    /* Navigation */
+    nav { position: sticky; top: 0; z-index: 10; background: rgba(13,16,23,.82); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+    nav .wrap { display: flex; align-items: center; gap: 28px; height: 64px; }
+    .brand { display: flex; align-items: center; gap: 10px; color: var(--text); font-weight: 600; }
+    .brand img { width: 30px; height: 30px; }
+    .brand small { display: block; font-size: 10px; letter-spacing: .08em; color: var(--muted); line-height: 1; }
+    .brand span { font-size: 18px; line-height: 1.1; }
+    nav .links { display: flex; gap: 22px; margin-left: auto; font-size: 15px; }
+    nav .links a { color: var(--muted); }
+    nav .links a:hover { color: var(--text); text-decoration: none; }
+
+    /* Buttons */
+    .btn { display: inline-flex; align-items: center; gap: 10px; padding: 13px 24px; border-radius: 10px; font-weight: 600; font-size: 16px; border: 1px solid transparent; transition: background .15s, border-color .15s, transform .15s; }
+    .btn:hover { text-decoration: none; transform: translateY(-1px); }
+    .btn-primary { background: var(--accent); color: #fff; box-shadow: 0 8px 30px rgba(61,139,255,.35); }
+    .btn-primary:hover { background: var(--accent-hover); }
+    .btn-ghost { background: var(--surface); color: var(--text); border-color: var(--border); }
+    .btn-ghost:hover { border-color: var(--faint); }
+    .btn svg { width: 18px; height: 18px; fill: currentColor; }
+
+    /* Hero */
+    .hero { position: relative; padding: 88px 0 40px; text-align: center; overflow: hidden; }
+    .hero::before { content: ""; position: absolute; inset: -40% -10% auto; height: 640px; background: radial-gradient(closest-side, rgba(61,139,255,.22), transparent 70%), radial-gradient(closest-side at 70% 40%, rgba(139,92,246,.16), transparent 70%); pointer-events: none; }
+    .hero > * { position: relative; }
+    .badge { display: inline-block; padding: 6px 14px; border: 1px solid var(--border); border-radius: 999px; color: var(--muted); font-size: 14px; background: var(--bg1); }
+    .badge b { color: var(--success); font-weight: 600; }
+    h1 { font-size: clamp(38px, 6vw, 64px); line-height: 1.08; letter-spacing: -.02em; margin: 22px auto 18px; max-width: 900px; }
+    h1 .grad { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .lead { font-size: clamp(17px, 2vw, 20px); color: var(--muted); max-width: 720px; margin: 0 auto 34px; }
+    .cta { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .fineprint { margin-top: 16px; color: var(--faint); font-size: 14px; }
+    .shot { margin: 56px auto 0; max-width: 1080px; border-radius: 16px; border: 1px solid var(--border); overflow: hidden; box-shadow: 0 40px 120px rgba(0,0,0,.55), 0 0 0 1px rgba(255,255,255,.02); }
+    .shot img { display: block; width: 100%; height: auto; }
+
+    /* Sections */
+    section { padding: 88px 0; }
+    .section-head { text-align: center; max-width: 720px; margin: 0 auto 48px; }
+    .eyebrow { color: var(--teal); font-weight: 600; font-size: 14px; letter-spacing: .08em; text-transform: uppercase; }
+    h2 { font-size: clamp(28px, 4vw, 40px); line-height: 1.15; letter-spacing: -.01em; margin: 10px 0 14px; }
+    .section-head p { color: var(--muted); margin: 0; font-size: 18px; }
+
+    .grid { display: grid; gap: 18px; grid-template-columns: repeat(3, 1fr); }
+    .card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 26px; }
+    .card .icon { width: 44px; height: 44px; border-radius: 11px; display: grid; place-items: center; background: var(--surface2); margin-bottom: 16px; font-size: 22px; }
+    .card h3 { margin: 0 0 8px; font-size: 18px; }
+    .card p { margin: 0; color: var(--muted); font-size: 15px; }
+
+    .steps { counter-reset: step; display: grid; gap: 18px; grid-template-columns: repeat(4, 1fr); }
+    .step { position: relative; background: var(--bg1); border: 1px solid var(--border); border-radius: var(--radius); padding: 26px 22px 22px; }
+    .step::before { counter-increment: step; content: counter(step); display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: rgba(61,139,255,.15); color: var(--accent-hover); font-weight: 700; margin-bottom: 14px; }
+    .step h3 { margin: 0 0 6px; font-size: 17px; }
+    .step p { margin: 0; color: var(--muted); font-size: 15px; }
+
+    .split { display: grid; grid-template-columns: 1.05fr 1fr; gap: 48px; align-items: center; }
+    .split img { width: 100%; height: auto; border-radius: 14px; border: 1px solid var(--border); box-shadow: 0 30px 80px rgba(0,0,0,.45); }
+    .checks { list-style: none; padding: 0; margin: 22px 0 0; }
+    .checks li { position: relative; padding-left: 32px; margin: 12px 0; color: var(--muted); }
+    .checks li b { color: var(--text); font-weight: 600; }
+    .checks li::before { content: "✓"; position: absolute; left: 0; top: 0; width: 22px; height: 22px; border-radius: 50%; background: rgba(52,211,153,.14); color: var(--success); display: grid; place-items: center; font-size: 13px; font-weight: 700; }
+
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; max-width: 900px; margin: 0 auto; }
+    .tags span { padding: 6px 12px; border-radius: 8px; background: var(--surface); border: 1px solid var(--border); color: var(--muted); font-size: 14px; }
+
+    table { width: 100%; border-collapse: collapse; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; font-size: 15px; }
+    th, td { text-align: left; padding: 14px 18px; border-bottom: 1px solid var(--border); vertical-align: top; }
+    th { color: var(--muted); font-weight: 600; background: var(--bg1); }
+    tr:last-child td { border-bottom: 0; }
+    td code, p code { background: var(--surface2); padding: 2px 6px; border-radius: 6px; font-size: 13.5px; }
+
+    details { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 18px 22px; margin: 0 0 12px; }
+    summary { cursor: pointer; font-weight: 600; list-style: none; display: flex; justify-content: space-between; }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { content: "+"; color: var(--muted); font-weight: 400; font-size: 20px; line-height: 1; }
+    details[open] summary::after { content: "–"; }
+    details p { color: var(--muted); margin: 12px 0 0; }
+
+    .download { text-align: center; background: linear-gradient(180deg, var(--bg1), var(--bg0)); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .download .cards { display: grid; grid-template-columns: repeat(2, minmax(0, 340px)); gap: 18px; justify-content: center; margin: 34px 0 20px; }
+    .download .card { text-align: left; }
+    .download .card .btn { margin-top: 18px; width: 100%; justify-content: center; }
+
+    footer { padding: 40px 0 56px; color: var(--faint); font-size: 14px; }
+    footer .wrap { display: flex; flex-wrap: wrap; gap: 18px; justify-content: space-between; align-items: center; }
+    footer a { color: var(--muted); }
+
+    @media (max-width: 900px) {
+      .grid { grid-template-columns: 1fr 1fr; }
+      .steps { grid-template-columns: 1fr 1fr; }
+      .split { grid-template-columns: 1fr; }
+      nav .links a:not(.keep) { display: none; }
+    }
+    @media (max-width: 600px) {
+      .grid, .steps, .download .cards { grid-template-columns: 1fr; }
+      section { padding: 64px 0; }
+      .hero { padding-top: 56px; }
+      th, td { padding: 12px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Set this to the GitHub repository once it is public, e.g. https://github.com/almarfeld/subflow -->
+  <script>window.SUBFLOW_REPO = "https://github.com/AlinTibi/SubFlow";</script>
+
+  <nav>
+    <div class="wrap">
+      <a class="brand" href="#top"><img src="images/logo.png" alt=""><div><small>ALMARFELD</small><span>SubFlow</span></div></a>
+      <div class="links">
+        <a href="#features">Features</a>
+        <a href="#how">How it works</a>
+        <a href="#privacy">Privacy</a>
+        <a href="#faq">FAQ</a>
+        <a class="keep" data-repo href="#">GitHub</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero" id="top">
+    <div class="wrap">
+      <span class="badge"><b>Free &amp; open source</b> · Windows 10 / 11 · MIT License</span>
+      <h1>Subtitles for your whole library, <span class="grad">in every language.</span></h1>
+      <p class="lead">SubFlow translates the subtitles of entire video collections with AI running on your own PC, and adds them as new tracks. No re-encoding, no upload, no account.</p>
+      <div class="cta">
+        <a class="btn btn-primary" data-download href="#download">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5.5 10.5 4.4v7.1H3V5.5Zm0 13 7.5 1.1v-7H3v5.9Zm8.4 1.2L21 21v-8.4h-9.6v7.1Zm0-15.4v7.2H21V3l-9.6 1.3Z"/></svg>
+          Download for Windows
+        </a>
+        <a class="btn btn-ghost" data-repo href="#">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.6 22.4c.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0c2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.2c0 .3.2.7.8.6A11.5 11.5 0 0 0 12 .5Z"/></svg>
+          View on GitHub
+        </a>
+      </div>
+      <p class="fineprint">One self-contained program · installs without administrator rights</p>
+      <div class="shot"><img src="images/dashboard.png" alt="The SubFlow dashboard with the setup steps, queue statistics and a system check" width="1958" height="1204"></div>
+    </div>
+  </header>
+
+  <section id="features">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Features</div>
+        <h2>Built for collections, not single files</h2>
+        <p>Drop in a movie, a season or hundreds of episodes. SubFlow does the rest and never touches your originals.</p>
+      </div>
+      <div class="grid">
+        <div class="card"><div class="icon">🔒</div><h3>Private by default</h3><p>Translation runs locally with Ollama. Nothing is uploaded and there is no telemetry. Cloud engines are optional and always ask first.</p></div>
+        <div class="card"><div class="icon">🎞️</div><h3>Lossless</h3><p>Video and audio are copied bit for bit into a new MKV. Every output is checked against its source before it is saved.</p></div>
+        <div class="card"><div class="icon">🧠</div><h3>Translated in context</h3><p>Lines are translated together with the surrounding dialogue. Every answer is checked for missing lines, the wrong alphabet and untranslated text.</p></div>
+        <div class="card"><div class="icon">🖼️</div><h3>Image subtitles too</h3><p>Blu-ray PGS subtitles are read with the OCR built into Windows, then translated. Subtitle files next to your videos work as well.</p></div>
+        <div class="card"><div class="icon">📚</div><h3>Consistent names</h3><p>A glossary for each series keeps names and terms the same in every episode. A cache means a line is never translated twice.</p></div>
+        <div class="card"><div class="icon">⏯️</div><h3>Resume anytime</h3><p>Pause, cancel or close SubFlow; the queue continues where it stopped. Every file is recorded in the history.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="how" style="background: var(--bg1); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">How it works</div>
+        <h2>Four steps, then it runs on its own</h2>
+      </div>
+      <div class="steps">
+        <div class="step"><h3>Add videos</h3><p>Drag files or whole folders onto the window. SubFlow lists every subtitle track it finds.</p></div>
+        <div class="step"><h3>Pick languages</h3><p>Choose any of the 42 languages, including right-to-left scripts such as Arabic and Hebrew.</p></div>
+        <div class="step"><h3>Choose an engine</h3><p>Use a local Ollama model for free, or DeepL, Google or an OpenAI-compatible API if you prefer.</p></div>
+        <div class="step"><h3>Start</h3><p>New MKVs with tracks such as "Romanian (AI)" appear in a <code>SubFlow Output</code> folder.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap split">
+      <div>
+        <div class="eyebrow">Under the hood</div>
+        <h2>Careful with your files and with the text</h2>
+        <ul class="checks">
+          <li><b>Never overwrites originals.</b> Outputs are written to a temporary file, validated, then renamed into place.</li>
+          <li><b>Never invents lines.</b> If a line cannot be translated reliably, that language is marked as failed instead of being guessed.</li>
+          <li><b>Keeps formatting:</b> positions, italics and ASS styles.</li>
+          <li><b>Picks the right track.</b> The full dialogue is used, not the "forced" or "songs" track.</li>
+          <li><b>Correct metadata:</b> ISO language codes, track titles and default flags.</li>
+        </ul>
+      </div>
+      <img src="images/queue.png" alt="The SubFlow queue with three finished files" loading="lazy" width="1958" height="1204">
+    </div>
+  </section>
+
+  <section style="padding-top: 0;">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Languages</div>
+        <h2>42 languages, more on request</h2>
+      </div>
+      <div class="tags">
+        <span>English</span><span>Romanian</span><span>Spanish</span><span>French</span><span>German</span><span>Italian</span><span>Portuguese</span><span>Dutch</span><span>Polish</span><span>Czech</span><span>Hungarian</span><span>Greek</span><span>Turkish</span><span>Russian</span><span>Ukrainian</span><span>Bulgarian</span><span>Swedish</span><span>Danish</span><span>Norwegian</span><span>Finnish</span><span>Arabic</span><span>Hebrew</span><span>Persian</span><span>Hindi</span><span>Japanese</span><span>Korean</span><span>Chinese</span><span>Vietnamese</span><span>Thai</span><span>Indonesian</span><span>…</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="privacy" style="background: var(--bg1); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+    <div class="wrap split">
+      <img src="images/settings.png" alt="SubFlow settings with local AI and optional cloud engines" loading="lazy" width="1958" height="1204">
+      <div>
+        <div class="eyebrow">Privacy</div>
+        <h2>Your videos stay yours</h2>
+        <ul class="checks">
+          <li><b>Local AI.</b> Subtitle text goes only to Ollama on your PC.</li>
+          <li><b>Video and audio are never sent anywhere,</b> whichever engine you use.</li>
+          <li><b>Cloud engines need your OK.</b> SubFlow says what will be sent and whether it may cost money.</li>
+          <li><b>Encrypted keys.</b> API keys are protected with Windows DPAPI.</li>
+          <li><b>No telemetry, accounts or ads.</b> The update check is off unless you turn it on.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="download" id="download">
+    <div class="wrap">
+      <div class="section-head" style="margin-bottom: 0;">
+        <div class="eyebrow">Download</div>
+        <h2>Get SubFlow for Windows</h2>
+        <p>Free and open source. Windows 10 (1809 or later) and Windows 11, 64-bit.</p>
+      </div>
+      <div class="cards">
+        <div class="card">
+          <h3>Installer</h3>
+          <p>Recommended. Installs for your user only, so no administrator rights are needed. Adds a Start menu entry and an uninstaller.</p>
+          <a class="btn btn-primary" data-download href="#">Download installer</a>
+        </div>
+        <div class="card">
+          <h3>Portable ZIP</h3>
+          <p>No installation: extract it anywhere and run <code>SubFlow.exe</code>. It also runs from a USB drive.</p>
+          <a class="btn btn-ghost" data-download href="#">Download ZIP</a>
+        </div>
+      </div>
+      <p class="fineprint">Install FFmpeg and Ollama separately; SubFlow's Dashboard installs them for you with one click. All versions and checksums are on <a data-releases href="#">GitHub Releases</a>.</p>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="wrap" style="max-width: 860px;">
+      <div class="section-head">
+        <div class="eyebrow">FAQ</div>
+        <h2>Questions</h2>
+      </div>
+      <details><summary>Is SubFlow really free?</summary><p>Yes. SubFlow is open source under the MIT License, and the local AI engine (Ollama) is free too. Only the optional cloud engines (DeepL, Google, OpenAI) can cost money, and they use your own account.</p></details>
+      <details><summary>What do I need besides SubFlow?</summary><p>FFmpeg to read and write videos, and Ollama with a model for local translation. The Dashboard checks both and installs them for you after you confirm. For an 8B model such as <code>qwen3:8b</code>, a GPU with at least 8 GB of memory is recommended; it also runs on the CPU, more slowly.</p></details>
+      <details><summary>Does it change my original video files?</summary><p>No. SubFlow writes new files to a separate output folder and checks each one against its source. Your originals are only ever read.</p></details>
+      <details><summary>How good are the translations?</summary><p>They depend on the model. Modern multilingual models give natural, context-aware subtitles for common languages. SubFlow rejects answers with missing or untranslated lines. You can review and correct any line in the built-in subtitle editor.</p></details>
+      <details><summary>Which subtitle formats are supported?</summary><p>SRT, ASS/SSA, WebVTT and MP4 text subtitles, subtitle files next to the video, and Blu-ray PGS image subtitles (through Windows OCR). DVD VobSub images are not supported yet.</p></details>
+      <details><summary>Does it remove DRM or copy protection?</summary><p>No. SubFlow works only with files you can already play. It does not circumvent copy protection of any kind.</p></details>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <div>© 2026 <a href="https://almarfeld.com">ALMARFELD</a> · SubFlow is released under the MIT License.</div>
+      <div><a data-repo href="#">GitHub</a> · <a data-releases href="#">Releases</a> · <a data-repo-path="/blob/main/THIRD-PARTY-NOTICES.md" href="#">Third-party licences</a></div>
+    </div>
+  </footer>
+
+  <script>
+    // All download and GitHub links come from one setting at the top of the page.
+    (function () {
+      var repo = (window.SUBFLOW_REPO || "").replace(/\/$/, "");
+      var ready = /^https:\/\/github\.com\/[^/]+\/[^/]+$/.test(repo) && repo.indexOf("OWNER/REPO") < 0;
+      document.querySelectorAll("[data-repo]").forEach(function (a) { a.href = ready ? repo : "#"; });
+      document.querySelectorAll("[data-releases], [data-download]").forEach(function (a) {
+        if (ready) { a.href = repo + "/releases/latest"; }
+      });
+      document.querySelectorAll("[data-repo-path]").forEach(function (a) {
+        if (ready) { a.href = repo + a.getAttribute("data-repo-path"); }
+      });
+    })();
+  </script>
+</body>
+</html>
