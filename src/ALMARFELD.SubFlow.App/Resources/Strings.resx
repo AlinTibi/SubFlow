@@ -130,19 +130,32 @@ This is a large download (about 5 GB) and is stored by Ollama on this PC. Contin
   <data name="Nav_Settings" xml:space="preserve"><value>Settings</value></data>
   <data name="Nav_Translation" xml:space="preserve"><value>Translation</value></data>
   <data name="Nav_Videos" xml:space="preserve"><value>Videos</value></data>
+  <data name="Queue_AlreadyQueued" xml:space="preserve"><value>Not added again, already in the queue: {0}.</value></data>
   <data name="Queue_ClearFinished" xml:space="preserve"><value>Clear finished</value></data>
   <data name="Queue_Done" xml:space="preserve"><value>done</value></data>
   <data name="Queue_Empty" xml:space="preserve"><value>The queue is empty. Add videos and start a translation.</value></data>
   <data name="Queue_Eta" xml:space="preserve"><value>About {0} remaining (estimated from the files finished so far: {1})</value></data>
   <data name="Queue_Failed" xml:space="preserve"><value>failed</value></data>
+  <data name="Queue_Hint" xml:space="preserve"><value>Tip: select several files with Ctrl or Shift, press Delete to remove them, or right-click for more options.</value></data>
   <data name="Queue_Idle" xml:space="preserve"><value>Idle</value></data>
   <data name="Queue_PauseResume" xml:space="preserve"><value>Pause / resume</value></data>
   <data name="Queue_Paused" xml:space="preserve"><value>Paused (finishes the current step first)</value></data>
+  <data name="Queue_RemoveSelected" xml:space="preserve"><value>Remove from queue</value></data>
+  <data name="Queue_RemoveWaiting" xml:space="preserve"><value>Remove waiting</value></data>
+  <data name="Queue_RemoveWaitingConfirm" xml:space="preserve"><value>Remove all files that are still waiting from the queue? ({0})
+
+The file being translated now and finished files are kept.</value></data>
   <data name="Queue_Retry" xml:space="preserve"><value>Retry</value></data>
   <data name="Queue_RetryFailed" xml:space="preserve"><value>Retry failed</value></data>
   <data name="Queue_Running" xml:space="preserve"><value>Running</value></data>
   <data name="Queue_Skipped" xml:space="preserve"><value>skipped</value></data>
   <data name="Queue_Start" xml:space="preserve"><value>Start / resume</value></data>
+  <data name="Queue_StopMany" xml:space="preserve"><value>Files being translated right now: {0}.
+
+Stop them and remove them from the queue? The other files continue.</value></data>
+  <data name="Queue_StopOne" xml:space="preserve"><value>"{0}" is being translated right now.
+
+Stop it and remove it from the queue? The other files continue.</value></data>
   <data name="Queue_Waiting" xml:space="preserve"><value>waiting</value></data>
   <data name="Set_AboutText" xml:space="preserve"><value>Translates the subtitles of whole video libraries with local AI and adds them as new tracks without re-encoding. Free and open source under the MIT License.</value></data>
   <data name="Set_ApiKey" xml:space="preserve"><value>API key (leave empty to keep the stored key)</value></data>

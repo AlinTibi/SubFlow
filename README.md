@@ -132,11 +132,11 @@ flowchart LR
 
 ## Verify your download
 
-Download `ALMARFELD-SubFlow-1.2.0-SHA256SUMS.txt` from the same official release. In PowerShell, run:
+Download `ALMARFELD-SubFlow-1.2.1-SHA256SUMS.txt` from the same official release. In PowerShell, run:
 
 ```powershell
-Get-FileHash -Algorithm SHA256 .\ALMARFELD-SubFlow-1.2.0-setup-win-x64.exe
-Get-FileHash -Algorithm SHA256 .\ALMARFELD-SubFlow-1.2.0-win-x64.zip
+Get-FileHash -Algorithm SHA256 .\ALMARFELD-SubFlow-1.2.1-setup-win-x64.exe
+Get-FileHash -Algorithm SHA256 .\ALMARFELD-SubFlow-1.2.1-win-x64.zip
 ```
 
 Compare with the corresponding published line. A matching hash checks artifact bytes; it is not a malware scan or an Authenticode signature.

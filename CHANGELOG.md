@@ -2,6 +2,14 @@
 
 All notable changes to ALMARFELD SubFlow. Versions follow [Semantic Versioning](https://semver.org).
 
+## 1.2.1 (2026-10-26)
+
+- Queue removal targets the chosen row or selection, supports Delete and multiple selection, and updates the displayed counts.
+- Files already waiting, running or interrupted are not queued twice. Replacing or clearing cancelled rows no longer restores obsolete entries after restart.
+- Removed waiting items are skipped, including when removal coincides with worker startup. A running item can be stopped after confirmation while other items continue.
+- Repeated and overlapping folder imports retain one entry per file. Removing a video from the list does not delete its source file.
+- Retains v1.2.0 export protections and adds regression coverage for selection, duplicate paths, persistence and scheduling races.
+
 ## 1.2.0 (2026-10-20)
 
 - Existing subtitle files are preserved with Skip in both subtitle-only and MKV-plus-subtitle export. Existing source-folder subtitles are preserved even when overwrite is selected; a numbered copy is saved instead. Concurrent file creation is never silently overwritten without an explicit overwrite policy.

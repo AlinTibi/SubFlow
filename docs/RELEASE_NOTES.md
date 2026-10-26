@@ -1,6 +1,10 @@
-# ALMARFELD SubFlow v1.2.0
+# ALMARFELD SubFlow v1.2.1
 
 Translate subtitle tracks with local Ollama or an explicitly selected cloud provider, review results and export new MKV/subtitle copies. Supports batch queues, sidecar text subtitles, Windows PGS OCR, glossary and translation cache.
+
+- Removes the selected queue rows reliably with row actions, Delete or the context menu, including multiple selection. Removing a source from the Videos list never deletes the file.
+- Prevents duplicate queue entries when starting the same files again; repeated and overlapping folder imports retain one video entry per file.
+- Removed waiting items are skipped, and running-item removal asks before cancellation while the remaining queue continues. Cancelled rows replaced or cleared from the queue do not reappear after restart.
 
 - Preserves existing SRT files with Skip, including MKV-plus-subtitle export, and protects existing subtitles in the source folder.
 - Installer and portable Windows x64 ZIP; self-contained .NET runtime, no WebView2 requirement.

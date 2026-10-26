@@ -130,19 +130,32 @@ Este o descărcare mare (aproximativ 5 GB), salvată de Ollama pe acest PC. Cont
   <data name="Nav_Settings" xml:space="preserve"><value>Setări</value></data>
   <data name="Nav_Translation" xml:space="preserve"><value>Traducere</value></data>
   <data name="Nav_Videos" xml:space="preserve"><value>Videoclipuri</value></data>
+  <data name="Queue_AlreadyQueued" xml:space="preserve"><value>Nu au fost adăugate din nou, sunt deja în coadă: {0}.</value></data>
   <data name="Queue_ClearFinished" xml:space="preserve"><value>Elimină finalizatele</value></data>
   <data name="Queue_Done" xml:space="preserve"><value>gata</value></data>
   <data name="Queue_Empty" xml:space="preserve"><value>Coada este goală. Adaugă videoclipuri și pornește o traducere.</value></data>
   <data name="Queue_Eta" xml:space="preserve"><value>Aproximativ {0} rămas (estimare după fișierele terminate până acum: {1})</value></data>
   <data name="Queue_Failed" xml:space="preserve"><value>eșuate</value></data>
+  <data name="Queue_Hint" xml:space="preserve"><value>Sfat: selectează mai multe fișiere cu Ctrl sau Shift, apasă Delete ca să le scoți, sau clic dreapta pentru alte opțiuni.</value></data>
   <data name="Queue_Idle" xml:space="preserve"><value>Inactiv</value></data>
   <data name="Queue_PauseResume" xml:space="preserve"><value>Pauză / reia</value></data>
   <data name="Queue_Paused" xml:space="preserve"><value>Pauză (termină întâi pasul curent)</value></data>
+  <data name="Queue_RemoveSelected" xml:space="preserve"><value>Scoate din coadă</value></data>
+  <data name="Queue_RemoveWaiting" xml:space="preserve"><value>Scoate cele în așteptare</value></data>
+  <data name="Queue_RemoveWaitingConfirm" xml:space="preserve"><value>Scot din coadă toate fișierele care încă așteaptă? ({0})
+
+Fișierul care se traduce acum și cele terminate rămân.</value></data>
   <data name="Queue_Retry" xml:space="preserve"><value>Reîncearcă</value></data>
   <data name="Queue_RetryFailed" xml:space="preserve"><value>Reîncearcă eșuatele</value></data>
   <data name="Queue_Running" xml:space="preserve"><value>Rulează</value></data>
   <data name="Queue_Skipped" xml:space="preserve"><value>omise</value></data>
   <data name="Queue_Start" xml:space="preserve"><value>Pornește / reia</value></data>
+  <data name="Queue_StopMany" xml:space="preserve"><value>Fișiere care se traduc chiar acum: {0}.
+
+Le opresc și le scot din coadă? Celelalte fișiere continuă.</value></data>
+  <data name="Queue_StopOne" xml:space="preserve"><value>„{0}” se traduce chiar acum.
+
+O opresc și o scot din coadă? Celelalte fișiere continuă.</value></data>
   <data name="Queue_Waiting" xml:space="preserve"><value>în așteptare</value></data>
   <data name="Set_AboutText" xml:space="preserve"><value>Traduce subtitrările unor colecții întregi de videoclipuri cu AI local și le adaugă ca piste noi, fără re-encodare. Gratuit și open source, sub licența MIT.</value></data>
   <data name="Set_ApiKey" xml:space="preserve"><value>Cheie API (lasă gol pentru a păstra cheia salvată)</value></data>

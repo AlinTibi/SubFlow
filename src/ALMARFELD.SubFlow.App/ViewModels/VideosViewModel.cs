@@ -170,10 +170,12 @@ public sealed class VideosViewModel : ObservableObject
 
     private void Remove(object? parameter)
     {
-        var items = parameter is System.Collections.IList list && list.Count > 0
+        var items = parameter is System.Collections.IList list
             ? list.OfType<VideoEntry>().ToList()
             : Selected is null ? new List<VideoEntry>() : [Selected];
         foreach (var e in items) Entries.Remove(e);
+        if (Selected is not null && !Entries.Contains(Selected)) Selected = Entries.FirstOrDefault();
+        Notify();
     }
 
     /// <summary>Adds files and folders (recursively) and probes new entries.</summary>
