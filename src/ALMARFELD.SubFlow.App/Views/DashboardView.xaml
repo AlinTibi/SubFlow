@@ -66,6 +66,21 @@
                 </Grid>
             </Border>
 
+            <!-- First start: something is missing -->
+            <Border Style="{StaticResource Card}" Margin="0,0,0,18" Padding="18,14" BorderBrush="{StaticResource Warning}"
+                    Visibility="{Binding ShowSetupNotice, Converter={StaticResource Vis}}">
+                <DockPanel>
+                    <Button DockPanel.Dock="Right" Style="{StaticResource PrimaryButton}" Command="{Binding GoCommand}" CommandParameter="Setup" VerticalAlignment="Center">
+                        <TextBlock Text="{l:Loc Dash_OpenSetup}" Foreground="White"/>
+                    </Button>
+                    <TextBlock Text="&#xE7BA;" Style="{StaticResource Icon}" Foreground="{StaticResource Warning}" VerticalAlignment="Center" Margin="0,0,12,0"/>
+                    <StackPanel VerticalAlignment="Center" Margin="0,0,16,0">
+                        <TextBlock Text="{l:Loc Dash_SetupTitle}" FontWeight="SemiBold"/>
+                        <TextBlock Text="{l:Loc Dash_SetupText}" Style="{StaticResource Subtle}" FontSize="12" TextWrapping="Wrap"/>
+                    </StackPanel>
+                </DockPanel>
+            </Border>
+
             <!-- Files left in the queue -->
             <Border Style="{StaticResource Card}" Margin="0,0,0,18" Padding="18,12" BorderBrush="{StaticResource Accent}"
                     Visibility="{Binding ShowWaitingNotice, Converter={StaticResource Vis}}">

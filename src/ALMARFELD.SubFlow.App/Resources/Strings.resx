@@ -36,6 +36,7 @@ Continue?</value></data>
   <data name="Dash_Ocr" xml:space="preserve"><value>Windows OCR (image subtitles)</value></data>
   <data name="Dash_OcrMissing" xml:space="preserve"><value>No OCR languages installed. Add a language with OCR in Windows Settings → Time &amp; language.</value></data>
   <data name="Dash_OpenQueue" xml:space="preserve"><value>Open queue</value></data>
+  <data name="Dash_OpenSetup" xml:space="preserve"><value>Open setup</value></data>
   <data name="Dash_PrivacyCloud" xml:space="preserve"><value>Cloud engine: subtitle text is sent to the provider.</value></data>
   <data name="Dash_PrivacyLocal" xml:space="preserve"><value>Local processing. Nothing leaves this PC.</value></data>
   <data name="Dash_Progress" xml:space="preserve"><value>Current progress</value></data>
@@ -44,6 +45,8 @@ Continue?</value></data>
 This is a large download (about 5 GB) and is stored by Ollama on this PC. Continue?</value></data>
   <data name="Dash_PullModel" xml:space="preserve"><value>Download {0}</value></data>
   <data name="Dash_Resume" xml:space="preserve"><value>Resume</value></data>
+  <data name="Dash_SetupText" xml:space="preserve"><value>Something SubFlow needs is missing (FFmpeg, Ollama or an AI model). The Setup page installs it step by step.</value></data>
+  <data name="Dash_SetupTitle" xml:space="preserve"><value>Finish the setup before your first translation</value></data>
   <data name="Dash_StartOllama" xml:space="preserve"><value>Start Ollama</value></data>
   <data name="Dash_Step1" xml:space="preserve"><value>Add videos</value></data>
   <data name="Dash_Step2" xml:space="preserve"><value>Select languages</value></data>
@@ -132,6 +135,7 @@ This is a large download (about 5 GB) and is stored by Ollama on this PC. Contin
   <data name="Nav_History" xml:space="preserve"><value>History</value></data>
   <data name="Nav_Queue" xml:space="preserve"><value>Queue</value></data>
   <data name="Nav_Settings" xml:space="preserve"><value>Settings</value></data>
+  <data name="Nav_Setup" xml:space="preserve"><value>Setup</value></data>
   <data name="Nav_Translation" xml:space="preserve"><value>Translation</value></data>
   <data name="Nav_Videos" xml:space="preserve"><value>Videos</value></data>
   <data name="Queue_AlreadyQueued" xml:space="preserve"><value>Not added again, already in the queue: {0}.</value></data>
@@ -207,6 +211,43 @@ Stop it and remove it from the queue? The other files continue.</value></data>
   <data name="Set_UpdateChecking" xml:space="preserve"><value>Checking…</value></data>
   <data name="Set_UpdateLatest" xml:space="preserve"><value>You have the latest version ({0}).</value></data>
   <data name="Set_UpdateUnknown" xml:space="preserve"><value>Could not check for updates. Releases are listed on almarfeld.com.</value></data>
+  <data name="Setup_Download" xml:space="preserve"><value>Download</value></data>
+  <data name="Setup_DownloadButton" xml:space="preserve"><value>Download</value></data>
+  <data name="Setup_DownloadCancelled" xml:space="preserve"><value>Download cancelled.</value></data>
+  <data name="Setup_DownloadConfirm" xml:space="preserve"><value>Download the AI model {0} ({1}) with Ollama?
+
+It is stored by Ollama on this PC and can take several minutes. You can keep using SubFlow meanwhile.</value></data>
+  <data name="Setup_FfmpegText" xml:space="preserve"><value>Free tool that reads and writes video files. Required.</value></data>
+  <data name="Setup_Hw12" xml:space="preserve"><value>graphics card with 12 GB or more</value></data>
+  <data name="Setup_Hw16" xml:space="preserve"><value>graphics card with 12–16 GB</value></data>
+  <data name="Setup_Hw4" xml:space="preserve"><value>graphics card with 4–6 GB, or runs slowly on the processor</value></data>
+  <data name="Setup_Hw8" xml:space="preserve"><value>graphics card with 8 GB or more</value></data>
+  <data name="Setup_InUse" xml:space="preserve"><value>In use</value></data>
+  <data name="Setup_Installed" xml:space="preserve"><value>Installed · {0}</value></data>
+  <data name="Setup_InstalledShort" xml:space="preserve"><value>Installed</value></data>
+  <data name="Setup_Manual" xml:space="preserve"><value>Download page</value></data>
+  <data name="Setup_MkvText" xml:space="preserve"><value>Improves how MKV files are written. SubFlow also works without it.</value></data>
+  <data name="Setup_ModelGemma12" xml:space="preserve"><value>Very good translations in many languages. Needs a strong graphics card.</value></data>
+  <data name="Setup_ModelGemma4" xml:space="preserve"><value>Smallest and fastest. Good for laptops and older graphics cards; quality is lower.</value></data>
+  <data name="Setup_ModelQwen14" xml:space="preserve"><value>Highest quality of this list. Needs a strong graphics card and is slower.</value></data>
+  <data name="Setup_ModelQwen8" xml:space="preserve"><value>Best balance of quality and speed, good in many languages.</value></data>
+  <data name="Setup_ModelTitle" xml:space="preserve"><value>AI model</value></data>
+  <data name="Setup_ModelsHint" xml:space="preserve"><value>Choose one model and download it. The first one is a good choice for most PCs; pick a smaller one for a laptop or a larger one for a powerful graphics card.</value></data>
+  <data name="Setup_ModelsNeedOllama" xml:space="preserve"><value>Install and start Ollama first (step 2), then download a model here.</value></data>
+  <data name="Setup_MoreModels" xml:space="preserve"><value>Any other chat model from the Ollama library also works:</value></data>
+  <data name="Setup_NotInstalled" xml:space="preserve"><value>Not installed yet.</value></data>
+  <data name="Setup_NotInstalledOptional" xml:space="preserve"><value>Not installed (optional).</value></data>
+  <data name="Setup_OcrText" xml:space="preserve"><value>Needed only for Blu-ray image subtitles (PGS). Add the subtitle language in Windows; its text recognition is installed with it.</value></data>
+  <data name="Setup_OllamaRunning" xml:space="preserve"><value>Installed and running · version {0}</value></data>
+  <data name="Setup_OllamaStopped" xml:space="preserve"><value>Installed, but not running.</value></data>
+  <data name="Setup_OllamaText" xml:space="preserve"><value>Free program that runs AI models on your own PC, so translation is private and costs nothing. Required for local translation.</value></data>
+  <data name="Setup_OpenLanguageSettings" xml:space="preserve"><value>Open language settings</value></data>
+  <data name="Setup_Optional" xml:space="preserve"><value>Optional</value></data>
+  <data name="Setup_Ready" xml:space="preserve"><value>All set: SubFlow is ready to translate. Add videos on the Videos page.</value></data>
+  <data name="Setup_Recommended" xml:space="preserve"><value>Recommended</value></data>
+  <data name="Setup_Starting" xml:space="preserve"><value>Starting…</value></data>
+  <data name="Setup_Subtitle" xml:space="preserve"><value>Everything SubFlow needs, in order. Each button installs or downloads one thing after asking you first. Nothing is installed without your confirmation.</value></data>
+  <data name="Setup_UseModel" xml:space="preserve"><value>Use this model</value></data>
   <data name="Side_Engine" xml:space="preserve"><value>Active engine</value></data>
   <data name="Status_Cancelled" xml:space="preserve"><value>Cancelled</value></data>
   <data name="Status_Completed" xml:space="preserve"><value>Completed</value></data>

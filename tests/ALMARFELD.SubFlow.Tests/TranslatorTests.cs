@@ -141,11 +141,12 @@ public class TranslatorTests
     [Fact]
     public async Task Translate_DroppedSecondLine_IsRetried()
     {
-        var doc = SubtitleParser.Parse("1\n00:00:01,000 --> 00:00:02,000\nI was born ready!\nLet's go, everyone.\n");
+        // The second line carries most of the words, so losing it is unmistakable.
+        var doc = SubtitleParser.Parse("1\n00:00:01,000 --> 00:00:02,000\nI was born ready!\nLet's go, everyone, the fight starts right now.\n");
         var provider = new FlakyLinesProvider();
         var result = await new DocumentTranslator(provider, null, Fast).TranslateAsync(Request(doc), null, CancellationToken.None);
         Assert.Equal(2, provider.Calls);
-        Assert.Equal("[ro] I was born ready!\nLet's go, everyone.", result.Document.Cues[0].Text);
+        Assert.Equal("[ro] I was born ready!\nLet's go, everyone, the fight starts right now.", result.Document.Cues[0].Text);
     }
 
     private sealed class FlakyLinesProvider : TaggingProvider

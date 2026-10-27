@@ -98,7 +98,7 @@ public class QueueViewModelTests
         var videos = new VideosViewModel(services);
         var translation = new TranslationViewModel(services, videos, restored, () => { });
         string? destination = null;
-        var dashboard = new DashboardViewModel(services, videos, translation, restored, page => destination = page);
+        var dashboard = new DashboardViewModel(services, videos, translation, restored, page => destination = page, new SetupViewModel(services, translation));
         Assert.True(dashboard.ShowWaitingNotice);
         Assert.Contains("1", dashboard.WaitingNotice);
         dashboard.GoCommand.Execute("Queue");

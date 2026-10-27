@@ -73,6 +73,19 @@ public static partial class LanguageDetector
 
     public static bool IsReliable(LanguageGuess? guess) => guess is not null && guess.Confidence >= ReliableThreshold;
 
+    /// <summary>
+    /// True when a short line reads like an ordinary sentence in the given language (it contains
+    /// one of the language's most common words), as opposed to a name, an interjection or song
+    /// lyrics in another language. Null when no word list exists for the language.
+    /// </summary>
+    public static bool? ContainsCommonWords(string text, string languageCode)
+    {
+        if (!StopWords.TryGetValue(languageCode, out var words)) return null;
+        var tokens = text.ToLowerInvariant()
+            .Split([' ', '\n', ',', '.', '!', '?', ';', ':', '"', '(', ')', '-', '…', '’', '\''], StringSplitOptions.RemoveEmptyEntries);
+        return tokens.Any(t => words.Contains(t, StringComparer.Ordinal));
+    }
+
     public static LanguageGuess? Detect(IEnumerable<string> lines)
     {
         var text = string.Join(' ', lines.Take(400));

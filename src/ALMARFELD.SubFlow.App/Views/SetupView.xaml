@@ -1,0 +1,147 @@
+<UserControl x:Class="ALMARFELD.SubFlow.App.Views.SetupView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:l="clr-namespace:ALMARFELD.SubFlow.App.Services">
+    <UserControl.Resources>
+        <!-- One required or optional component -->
+        <DataTemplate x:Key="StepTemplate">
+            <Border Style="{StaticResource Card}" Margin="0,0,0,12" Padding="20,16">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="44"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Border x:Name="Badge" Width="30" Height="30" CornerRadius="15" Background="{StaticResource Surface2}" VerticalAlignment="Top">
+                        <Grid>
+                            <TextBlock x:Name="Num" Text="{Binding Number}" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="SemiBold" Foreground="{StaticResource TextMuted}"/>
+                            <TextBlock x:Name="Check" Text="&#xE73E;" FontFamily="{StaticResource IconFont}" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                       Foreground="{StaticResource Success}" Visibility="Collapsed"/>
+                        </Grid>
+                    </Border>
+                    <StackPanel Grid.Column="1" Margin="0,0,16,0">
+                        <TextBlock Text="{Binding Title}" FontSize="16" FontWeight="SemiBold"/>
+                        <TextBlock Text="{Binding Description}" Style="{StaticResource Subtle}" FontSize="12.5" TextWrapping="Wrap" Margin="0,3,0,6"/>
+                        <TextBlock x:Name="StatusText" Text="{Binding Status}" FontSize="12" Foreground="{StaticResource Danger}" TextWrapping="Wrap"/>
+                    </StackPanel>
+                    <StackPanel Grid.Column="2" VerticalAlignment="Center" Orientation="Horizontal">
+                        <Button Content="{l:Loc Setup_Manual}" Style="{StaticResource GhostButton}" Margin="0,0,8,0"
+                                Command="{Binding DataContext.OpenUrlCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="{Binding ManualUrl}"
+                                Visibility="{Binding ManualUrl, Converter={StaticResource Vis}}" x:Name="Manual"/>
+                        <Button Style="{StaticResource PrimaryButton}" Padding="16,8"
+                                Command="{Binding DataContext.FixCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="{Binding ActionParameter}"
+                                Visibility="{Binding HasAction, Converter={StaticResource Vis}}">
+                            <TextBlock Text="{Binding ActionLabel}" Foreground="White"/>
+                        </Button>
+                    </StackPanel>
+                </Grid>
+            </Border>
+            <DataTemplate.Triggers>
+                <DataTrigger Binding="{Binding Ok}" Value="True">
+                    <Setter TargetName="Num" Property="Visibility" Value="Collapsed"/>
+                    <Setter TargetName="Check" Property="Visibility" Value="Visible"/>
+                    <Setter TargetName="StatusText" Property="Foreground" Value="{StaticResource Success}"/>
+                    <Setter TargetName="Manual" Property="Visibility" Value="Collapsed"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding State}" Value="optional">
+                    <Setter TargetName="StatusText" Property="Foreground" Value="{StaticResource TextMuted}"/>
+                </DataTrigger>
+            </DataTemplate.Triggers>
+        </DataTemplate>
+    </UserControl.Resources>
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel Margin="36,30,36,30">
+            <DockPanel Margin="0,0,0,18">
+                <Button DockPanel.Dock="Right" Style="{StaticResource GhostButton}" Command="{Binding RefreshCommand}" ToolTip="{l:Loc Common_Refresh}" VerticalAlignment="Top">
+                    <TextBlock Text="&#xE72C;" Style="{StaticResource Icon}"/>
+                </Button>
+                <StackPanel>
+                    <TextBlock Text="{l:Loc Nav_Setup}" Style="{StaticResource H1}"/>
+                    <TextBlock Text="{l:Loc Setup_Subtitle}" Style="{StaticResource Subtle}" Margin="0,6,0,0" TextWrapping="Wrap" MaxWidth="820" HorizontalAlignment="Left"/>
+                </StackPanel>
+            </DockPanel>
+
+            <Border Style="{StaticResource Card}" Margin="0,0,0,18" Padding="18,12" BorderBrush="{StaticResource Success}"
+                    Visibility="{Binding IsReady, Converter={StaticResource Vis}}">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="&#xE73E;" Style="{StaticResource Icon}" Foreground="{StaticResource Success}" Margin="0,0,10,0" VerticalAlignment="Center"/>
+                    <TextBlock Text="{l:Loc Setup_Ready}" VerticalAlignment="Center" TextWrapping="Wrap"/>
+                </StackPanel>
+            </Border>
+
+            <ItemsControl ItemsSource="{Binding Steps}" ItemTemplate="{StaticResource StepTemplate}"/>
+
+            <!-- Step 3: AI model -->
+            <Border Style="{StaticResource Card}" Margin="0,0,0,12" Padding="20,16">
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Border Width="30" Height="30" CornerRadius="15" Background="{StaticResource Surface2}" Margin="0,0,14,0">
+                            <Grid>
+                                <TextBlock Text="3" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="SemiBold" Foreground="{StaticResource TextMuted}"
+                                           Visibility="{Binding HasModel, Converter={StaticResource NotVis}}"/>
+                                <TextBlock Text="&#xE73E;" FontFamily="{StaticResource IconFont}" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                           Foreground="{StaticResource Success}" Visibility="{Binding HasModel, Converter={StaticResource Vis}}"/>
+                            </Grid>
+                        </Border>
+                        <TextBlock Text="{l:Loc Setup_ModelTitle}" FontSize="16" FontWeight="SemiBold" VerticalAlignment="Center"/>
+                    </StackPanel>
+                    <TextBlock Text="{Binding ModelsHint}" Style="{StaticResource Subtle}" FontSize="12.5" TextWrapping="Wrap" Margin="44,4,0,12"/>
+                    <ItemsControl ItemsSource="{Binding Models}" Margin="44,0,0,0">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border Background="{StaticResource Surface2}" CornerRadius="8" Padding="14,12" Margin="0,0,0,8">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <StackPanel Margin="0,0,16,0">
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="{Binding Title}" FontWeight="SemiBold"/>
+                                                <TextBlock Text="{Binding Name}" Foreground="{StaticResource TextFaint}" FontSize="12" Margin="8,1,0,0"/>
+                                                <Border Style="{StaticResource Pill}" Margin="10,0,0,0" Visibility="{Binding Recommended, Converter={StaticResource Vis}}">
+                                                    <TextBlock Text="{l:Loc Setup_Recommended}" FontSize="11" Foreground="{StaticResource Teal}"/>
+                                                </Border>
+                                                <Border Style="{StaticResource Pill}" Margin="8,0,0,0" Visibility="{Binding Selected, Converter={StaticResource Vis}}">
+                                                    <TextBlock Text="{l:Loc Setup_InUse}" FontSize="11" Foreground="{StaticResource Success}"/>
+                                                </Border>
+                                            </StackPanel>
+                                            <TextBlock Text="{Binding Description}" Style="{StaticResource Subtle}" FontSize="12" TextWrapping="Wrap" Margin="0,3,0,3"/>
+                                            <TextBlock FontSize="11.5" Foreground="{StaticResource TextFaint}">
+                                                <Run Text="{l:Loc Setup_Download}"/> <Run Text="{Binding Size, Mode=OneWay}"/> · <Run Text="{Binding Hardware, Mode=OneWay}"/>
+                                            </TextBlock>
+                                            <StackPanel Margin="0,8,0,0" Visibility="{Binding Downloading, Converter={StaticResource Vis}}">
+                                                <ProgressBar Value="{Binding Progress, Mode=OneWay}" Maximum="100" Height="6"/>
+                                                <TextBlock Text="{Binding ProgressText}" FontSize="11" Foreground="{StaticResource TextMuted}" Margin="0,4,0,0"/>
+                                            </StackPanel>
+                                        </StackPanel>
+                                        <StackPanel Grid.Column="1" VerticalAlignment="Center" Orientation="Horizontal">
+                                            <TextBlock Text="{l:Loc Setup_InstalledShort}" Foreground="{StaticResource Success}" VerticalAlignment="Center" Margin="0,0,10,0"
+                                                       Visibility="{Binding Installed, Converter={StaticResource Vis}}"/>
+                                            <Button Content="{l:Loc Setup_UseModel}" Visibility="{Binding CanUse, Converter={StaticResource Vis}}"
+                                                    Command="{Binding DataContext.UseCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="{Binding}"/>
+                                            <Button Style="{StaticResource PrimaryButton}" Padding="16,8" Visibility="{Binding CanDownload, Converter={StaticResource Vis}}"
+                                                    Command="{Binding DataContext.DownloadCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="{Binding}">
+                                                <TextBlock Text="{l:Loc Setup_DownloadButton}" Foreground="White"/>
+                                            </Button>
+                                            <Button Content="{l:Loc Common_Cancel}" Visibility="{Binding Downloading, Converter={StaticResource Vis}}"
+                                                    Command="{Binding DataContext.CancelDownloadCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"/>
+                                        </StackPanel>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                    <TextBlock Margin="44,6,0,0" FontSize="12" TextWrapping="Wrap">
+                        <Run Text="{l:Loc Setup_MoreModels}" Foreground="{StaticResource TextMuted}"/>
+                        <Hyperlink Command="{Binding OpenUrlCommand}" CommandParameter="https://ollama.com/library" Foreground="{StaticResource Accent}">ollama.com/library</Hyperlink>
+                    </TextBlock>
+                </StackPanel>
+            </Border>
+
+            <TextBlock Text="{l:Loc Setup_Optional}" Style="{StaticResource H2}" Margin="0,18,0,10"/>
+            <ItemsControl ItemsSource="{Binding OptionalSteps}" ItemTemplate="{StaticResource StepTemplate}"/>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

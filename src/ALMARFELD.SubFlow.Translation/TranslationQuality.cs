@@ -50,16 +50,26 @@ public static class TranslationQuality
             if (latin < letters.Count * 0.5) return SegmentVerdict.WrongScript;
         }
 
-        if (sourceLetters >= 25 && string.Equals(Normalise(source), Normalise(translation), StringComparison.OrdinalIgnoreCase))
-            return SegmentVerdict.Untranslated;
+        // Copied unchanged: fine for names, interjections and song lyrics in a third language
+        // ("Gohan!", "Huh?", "CHA-LA-HEAD-CHA-LA"), but not for an ordinary sentence of the
+        // source language ("So, we finally meet.").
+        if (string.Equals(Normalise(source), Normalise(translation), StringComparison.OrdinalIgnoreCase))
+        {
+            var sentence = LanguageDetector.ContainsCommonWords(source, sourceLanguage.Code) ?? sourceLetters >= 25;
+            return sentence ? SegmentVerdict.Untranslated : SegmentVerdict.Ok;
+        }
 
         // Dropped dialogue guard: a two-line cue that comes back as fewer lines and noticeably
         // shorter has probably lost a line ("Born ready!" + "Let's go." → only the first part).
         var sourceLines = source.Split('\n', StringSplitOptions.RemoveEmptyEntries).Count(l => l.Any(char.IsLetter));
         var translatedLines = translation.Split('\n', StringSplitOptions.RemoveEmptyEntries).Length;
+        // Word counts, not characters: "That's when I remembered / about you, Kakarrot." →
+        // "Așa mi-am amintit de tine, Kakarrot." is complete on one line; a lost line roughly
+        // halves the number of words.
+        static int Words(string s) => s.Split([' ', '\n'], StringSplitOptions.RemoveEmptyEntries).Count(w => w.Any(char.IsLetter));
         if (sourceLines >= 2 && translatedLines < sourceLines &&
             Expected(sourceLanguage) == Script.Latin && Expected(target) == Script.Latin &&
-            translation.Length < source.Length * 0.85)
+            Words(translation) < Words(source) * 0.6)
             return SegmentVerdict.MissingLines;
 
         return SegmentVerdict.Ok;

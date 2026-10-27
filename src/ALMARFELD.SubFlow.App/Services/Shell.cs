@@ -23,4 +23,11 @@ public static class Shell
         if (!url.StartsWith("https://", StringComparison.OrdinalIgnoreCase)) return;
         try { Process.Start(new ProcessStartInfo(url) { UseShellExecute = true }); } catch { }
     }
+
+    /// <summary>Opens a page of the Windows Settings app (ms-settings: links only).</summary>
+    public static void OpenWindowsSettings(string uri)
+    {
+        if (!uri.StartsWith("ms-settings:", StringComparison.OrdinalIgnoreCase)) return;
+        try { Process.Start(new ProcessStartInfo(uri) { UseShellExecute = true }); } catch { }
+    }
 }

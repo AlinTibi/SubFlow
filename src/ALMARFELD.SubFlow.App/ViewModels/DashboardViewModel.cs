@@ -21,8 +21,10 @@ public sealed class DashboardViewModel : ObservableObject
     private readonly AppServices _services;
     private IReadOnlyList<HealthItem> _health = Array.Empty<HealthItem>();
 
-    public DashboardViewModel(AppServices services, VideosViewModel videos, TranslationViewModel translation, QueueViewModel queue, Action<string> navigate)
+    public DashboardViewModel(AppServices services, VideosViewModel videos, TranslationViewModel translation, QueueViewModel queue, Action<string> navigate, SetupViewModel setup)
     {
+        Setup = setup;
+        setup.Changed += () => OnPropertyChanged(nameof(ShowSetupNotice));
         _services = services;
         Videos = videos;
         Translation = translation;
@@ -41,6 +43,11 @@ public sealed class DashboardViewModel : ObservableObject
         services.SettingsChanged += () => _ = RefreshHealthAsync();
         _ = RefreshHealthAsync();
     }
+
+    public SetupViewModel Setup { get; }
+
+    /// <summary>FFmpeg, Ollama or an AI model is still missing: point first-time users to Setup.</summary>
+    public bool ShowSetupNotice => !Setup.IsReady;
 
     public VideosViewModel Videos { get; }
     public TranslationViewModel Translation { get; }

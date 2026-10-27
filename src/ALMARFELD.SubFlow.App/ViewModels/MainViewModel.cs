@@ -23,7 +23,8 @@ public sealed class MainViewModel : ObservableObject
         Videos = new VideosViewModel(services);
         Queue = new QueueViewModel(services);
         Translation = new TranslationViewModel(services, Videos, Queue, () => Navigate("Queue"));
-        Dashboard = new DashboardViewModel(services, Videos, Translation, Queue, Navigate);
+        Setup = new SetupViewModel(services, Translation);
+        Dashboard = new DashboardViewModel(services, Videos, Translation, Queue, Navigate, Setup);
         Editor = new EditorViewModel(services, Translation);
         History = new HistoryViewModel(services);
         Glossary = new GlossaryViewModel(services);
@@ -32,6 +33,7 @@ public sealed class MainViewModel : ObservableObject
         Nav =
         [
             new NavItem("Dashboard", "", Dashboard),
+            new NavItem("Setup", "", Setup),
             new NavItem("Videos", "", Videos),
             new NavItem("Translation", "", Translation),
             new NavItem("Editor", "", Editor),
@@ -77,6 +79,7 @@ public sealed class MainViewModel : ObservableObject
 
     public AppServices Services { get; }
     public DashboardViewModel Dashboard { get; }
+    public SetupViewModel Setup { get; }
     public VideosViewModel Videos { get; }
     public TranslationViewModel Translation { get; }
     public EditorViewModel Editor { get; }
@@ -100,6 +103,7 @@ public sealed class MainViewModel : ObservableObject
         foreach (var n in Nav) n.IsSelected = n == item;
         CurrentPage = item.Page;
         if (item.Page == History) History.Refresh();
+        if (item.Page == Setup) _ = Setup.RefreshAsync();
     }
 
     /// <summary>Files dropped anywhere on the window go to the Videos page.</summary>

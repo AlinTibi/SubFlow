@@ -1,5 +1,22 @@
 # ALMARFELD SubFlow: User guide
 
+## 0. Setup (first start)
+
+The **Setup** page lists everything SubFlow needs, in order, with one button per item. Each button asks before it installs or downloads anything:
+
+1. **FFmpeg** reads and writes video files (required). **Install FFmpeg** uses the Windows Package Manager; **Download page** opens the manual download.
+2. **Ollama** runs the AI on your PC (required for free local translation). Use **Install Ollama**, or **Start Ollama** if it is installed but not running.
+3. **AI model.** Pick one from the list and press **Download**; progress is shown in the app and the model is selected automatically when it finishes.
+   - *Qwen3 8B* (about 5.2 GB, 8 GB graphics card): recommended for most PCs.
+   - *Gemma 3 4B* (about 3.3 GB): for laptops and older graphics cards.
+   - *Gemma 3 12B* or *Qwen3 14B* (8–9 GB): best quality on strong graphics cards.
+
+   **Use this model** switches between models you already have.
+
+Optional items: MKVToolNix (better MKV writing) and Windows OCR languages (for Blu-ray image subtitles).
+
+While something required is missing, the Dashboard shows a notice with an **Open setup** button.
+
 ## 1. Dashboard
 
 The dashboard shows whether everything SubFlow needs is available:

@@ -19,9 +19,11 @@ public sealed record OllamaStatus(bool IsRunning, string? Version, IReadOnlyList
 public sealed class OllamaClient
 {
     private readonly HttpClient _http;
+    private readonly HttpMessageHandler? _handler;
 
     public OllamaClient(string endpoint, TimeSpan? timeout = null, HttpMessageHandler? handler = null)
     {
+        _handler = handler;
         Endpoint = endpoint.TrimEnd('/');
         _http = handler is null ? new HttpClient() : new HttpClient(handler);
         _http.BaseAddress = new Uri(Endpoint + "/");
@@ -70,6 +72,42 @@ public sealed class OllamaClient
             }
         }
         return list.Where(m => m.Name.Length > 0).OrderBy(m => m.Name, StringComparer.OrdinalIgnoreCase).ToList();
+    }
+
+    /// <summary>
+    /// Downloads a model from the Ollama library (POST /api/pull, streamed), reporting progress as
+    /// a fraction 0â€“1 together with Ollama's status text. Large models take many minutes, so this
+    /// call has no timeout of its own; cancel it with <paramref name="ct"/>.
+    /// </summary>
+    public async Task PullAsync(string model, IProgress<(double Fraction, string Status)>? progress, CancellationToken ct)
+    {
+        using var http = _handler is null ? new HttpClient() : new HttpClient(_handler, disposeHandler: false);
+        http.BaseAddress = _http.BaseAddress;
+        http.Timeout = Timeout.InfiniteTimeSpan;
+        using var request = new HttpRequestMessage(HttpMethod.Post, "api/pull")
+        {
+            Content = JsonContent.Create(new { model, stream = true }),
+        };
+        using var resp = await http.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, ct);
+        if (!resp.IsSuccessStatusCode)
+            throw new TranslationProviderException($"Ollama could not download {model} ({(int)resp.StatusCode}).", isTransient: false);
+
+        using var reader = new StreamReader(await resp.Content.ReadAsStreamAsync(ct));
+        var succeeded = false;
+        while (await reader.ReadLineAsync(ct) is { } line)
+        {
+            if (line.Length == 0) continue;
+            var obj = JsonNode.Parse(line) as JsonObject;
+            if (obj?["error"]?.GetValue<string>() is { } error)
+                throw new TranslationProviderException($"Ollama could not download {model}: {error}", isTransient: false);
+            var status = obj?["status"]?.GetValue<string>() ?? "";
+            if (status == "success") succeeded = true;
+            var total = obj?["total"]?.GetValue<long>() ?? 0;
+            var done = obj?["completed"]?.GetValue<long>() ?? 0;
+            progress?.Report((total > 0 ? Math.Clamp(done / (double)total, 0, 1) : status == "success" ? 1 : -1, status));
+        }
+        if (!succeeded)
+            throw new TranslationProviderException($"Ollama download of {model} ended without confirming success.", isTransient: true);
     }
 
     public async Task<IReadOnlyList<string>> GetCapabilitiesAsync(string model, CancellationToken ct)

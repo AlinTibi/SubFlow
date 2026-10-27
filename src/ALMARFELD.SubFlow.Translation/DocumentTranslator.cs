@@ -205,6 +205,19 @@ public sealed class DocumentTranslator : ISubtitleTranslator
                 : $"Return all {remaining.Count} segment(s) again. Problems: {string.Join("; ", problems.Take(10))}.";
         }
 
+        // Smaller requests often fix what a big one got wrong (a model copying a whole block of
+        // English, for example), so split before settling for a doubtful answer.
+        if (remaining.Count > 1 && depth < 4)
+        {
+            var half = remaining.Count / 2;
+            foreach (var part in new[] { remaining.Take(half).ToList(), remaining.Skip(half).ToList() })
+            {
+                var partResult = await TranslateWithRecoveryAsync(part, context, request, glossary, warnings, depth + 1, ct);
+                foreach (var kv in partResult) accepted[kv.Key] = kv.Value;
+            }
+            return accepted;
+        }
+
         // Segments that only failed soft checks keep their best answer and are reported.
         var softKept = 0;
         foreach (var unit in remaining.ToList())
@@ -219,18 +232,6 @@ public sealed class DocumentTranslator : ISubtitleTranslator
         if (softKept > 0)
             warnings.Add($"{Text.Count(softKept, "segment")} may be incomplete or untranslated after retries; review them in the Subtitle Editor.");
         if (remaining.Count == 0) return accepted;
-
-        // Fallback: smaller batches are easier for weak models.
-        if (remaining.Count > 1 && depth < 4)
-        {
-            var half = remaining.Count / 2;
-            foreach (var part in new[] { remaining.Take(half).ToList(), remaining.Skip(half).ToList() })
-            {
-                var partResult = await TranslateWithRecoveryAsync(part, context, request, glossary, warnings, depth + 1, ct);
-                foreach (var kv in partResult) accepted[kv.Key] = kv.Value;
-            }
-            return accepted;
-        }
 
         var ids = string.Join(", ", remaining.Select(u => u.Cue.Index));
         throw new IncompleteTranslationException(
