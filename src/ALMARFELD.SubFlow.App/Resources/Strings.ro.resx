@@ -227,14 +227,14 @@ Este salvat de Ollama pe acest calculator și poate dura câteva minute. Poți f
   <data name="Setup_InstalledShort" xml:space="preserve"><value>Instalat</value></data>
   <data name="Setup_Manual" xml:space="preserve"><value>Pagina de descărcare</value></data>
   <data name="Setup_MkvText" xml:space="preserve"><value>Îmbunătățește scrierea fișierelor MKV. SubFlow merge și fără el.</value></data>
-  <data name="Setup_ModelGemma12" xml:space="preserve"><value>Traduceri foarte bune în multe limbi. Are nevoie de o placă video puternică.</value></data>
-  <data name="Setup_ModelGemma4" xml:space="preserve"><value>Cel mai mic și mai rapid. Bun pentru laptopuri și plăci video mai vechi; calitatea este mai slabă.</value></data>
-  <data name="Setup_ModelQwen14" xml:space="preserve"><value>Cea mai bună calitate din listă. Are nevoie de o placă video puternică și este mai lent.</value></data>
-  <data name="Setup_ModelQwen8" xml:space="preserve"><value>Cel mai bun echilibru între calitate și viteză, bun în multe limbi.</value></data>
+  <data name="Setup_ModelGemma12" xml:space="preserve"><value>Model local mai mare. Calitatea depinde de limba și de conținutul subtitrării.</value></data>
+  <data name="Setup_ModelGemma4" xml:space="preserve"><value>Descărcare mai mică din această listă. Verifică traducerea pentru limbile alese.</value></data>
+  <data name="Setup_ModelQwen14" xml:space="preserve"><value>Model mai mare, cu cerințe de memorie mai ridicate. Verifică traducerile înainte de export.</value></data>
+  <data name="Setup_ModelQwen8" xml:space="preserve"><value>Model de chat local. Testează un fragment înainte de procesarea unei cozi mari.</value></data>
   <data name="Setup_ModelTitle" xml:space="preserve"><value>Model AI</value></data>
-  <data name="Setup_ModelsHint" xml:space="preserve"><value>Alege un model și descarcă-l. Primul este o alegere bună pentru majoritatea calculatoarelor; alege unul mai mic pentru laptop sau unul mai mare pentru o placă video puternică.</value></data>
+  <data name="Setup_ModelsHint" xml:space="preserve"><value>Alege un model potrivit memoriei disponibile. Dimensiunile sunt aproximative; viteza și calitatea traducerii variază.</value></data>
   <data name="Setup_ModelsNeedOllama" xml:space="preserve"><value>Instalează și pornește întâi Ollama (pasul 2), apoi descarcă un model de aici.</value></data>
-  <data name="Setup_MoreModels" xml:space="preserve"><value>Orice alt model de chat din biblioteca Ollama funcționează:</value></data>
+  <data name="Setup_MoreModels" xml:space="preserve"><value>Alte modele de chat compatibile pot fi selectate din biblioteca Ollama:</value></data>
   <data name="Setup_NotInstalled" xml:space="preserve"><value>Nu este instalat încă.</value></data>
   <data name="Setup_NotInstalledOptional" xml:space="preserve"><value>Nu este instalat (opțional).</value></data>
   <data name="Setup_OcrText" xml:space="preserve"><value>Necesar doar pentru subtitrările-imagine de pe Blu-ray (PGS). Adaugă limba subtitrării în Windows; recunoașterea textului se instalează odată cu ea.</value></data>

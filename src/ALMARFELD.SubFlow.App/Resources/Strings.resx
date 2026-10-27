@@ -4,7 +4,7 @@
   <resheader name="version"><value>2.0</value></resheader>
   <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
   <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
-  <data name="Common_Browse" xml:space="preserve"><value>Browseâ€¦</value></data>
+  <data name="Common_Browse" xml:space="preserve"><value>Browse…</value></data>
   <data name="Common_Cancel" xml:space="preserve"><value>Cancel</value></data>
   <data name="Common_ClearAll" xml:space="preserve"><value>Clear all</value></data>
   <data name="Common_Refresh" xml:space="preserve"><value>Refresh</value></data>
@@ -34,7 +34,7 @@ Continue?</value></data>
   <data name="Dash_NoLanguages" xml:space="preserve"><value>No languages selected</value></data>
   <data name="Dash_NoModels" xml:space="preserve"><value>Ollama is running but has no model yet.</value></data>
   <data name="Dash_Ocr" xml:space="preserve"><value>Windows OCR (image subtitles)</value></data>
-  <data name="Dash_OcrMissing" xml:space="preserve"><value>No OCR languages installed. Add a language with OCR in Windows Settings â†’ Time &amp; language.</value></data>
+  <data name="Dash_OcrMissing" xml:space="preserve"><value>No OCR languages installed. Add a language with OCR in Windows Settings → Time &amp; language.</value></data>
   <data name="Dash_OpenQueue" xml:space="preserve"><value>Open queue</value></data>
   <data name="Dash_OpenSetup" xml:space="preserve"><value>Open setup</value></data>
   <data name="Dash_PrivacyCloud" xml:space="preserve"><value>Cloud engine: subtitle text is sent to the provider.</value></data>
@@ -52,7 +52,7 @@ This is a large download (about 5 GB) and is stored by Ollama on this PC. Contin
   <data name="Dash_Step2" xml:space="preserve"><value>Select languages</value></data>
   <data name="Dash_Step3" xml:space="preserve"><value>Select engine</value></data>
   <data name="Dash_Step4" xml:space="preserve"><value>Start</value></data>
-  <data name="Dash_Subtitle" xml:space="preserve"><value>Translate the subtitles of entire video collections and add them as new tracks â€” without re-encoding.</value></data>
+  <data name="Dash_Subtitle" xml:space="preserve"><value>Translate the subtitles of entire video collections and add them as new tracks — without re-encoding.</value></data>
   <data name="Dash_Title" xml:space="preserve"><value>Welcome to SubFlow</value></data>
   <data name="Dash_VideosLoaded" xml:space="preserve"><value>videos loaded</value></data>
   <data name="Dash_Waiting" xml:space="preserve"><value>Files waiting</value></data>
@@ -65,9 +65,9 @@ This is a large download (about 5 GB) and is stored by Ollama on this PC. Contin
   <data name="Ed_ColTranslation" xml:space="preserve"><value>Translation (double-click to edit)</value></data>
   <data name="Ed_EmptyHint" xml:space="preserve"><value>Open a translated video and pick its tracks, or open a translated subtitle file with its original. Timing is never changed when you edit text.</value></data>
   <data name="Ed_EmptyTitle" xml:space="preserve"><value>Review and correct translations</value></data>
-  <data name="Ed_ExportSrt" xml:space="preserve"><value>Export SRTâ€¦</value></data>
+  <data name="Ed_ExportSrt" xml:space="preserve"><value>Export SRT…</value></data>
   <data name="Ed_FindNext" xml:space="preserve"><value>Find next</value></data>
-  <data name="Ed_GlossaryApplied" xml:space="preserve"><value>Glossary applied Â· lines changed: {0}</value></data>
+  <data name="Ed_GlossaryApplied" xml:space="preserve"><value>Glossary applied · lines changed: {0}</value></data>
   <data name="Ed_Languages" xml:space="preserve"><value>Languages</value></data>
   <data name="Ed_Load" xml:space="preserve"><value>Load</value></data>
   <data name="Ed_Loaded" xml:space="preserve"><value>{0} subtitle lines loaded</value></data>
@@ -76,26 +76,26 @@ This is a large download (about 5 GB) and is stored by Ollama on this PC. Contin
   <data name="Ed_NoMatches" xml:space="preserve"><value>No matches</value></data>
   <data name="Ed_NoOverwriteSource" xml:space="preserve"><value>Choose a different file name: the opened video is never overwritten.</value></data>
   <data name="Ed_NoTextTracks" xml:space="preserve"><value>This video has no text subtitle tracks.</value></data>
-  <data name="Ed_OpenFiles" xml:space="preserve"><value>Open subtitle filesâ€¦</value></data>
-  <data name="Ed_OpenVideo" xml:space="preserve"><value>Open videoâ€¦</value></data>
+  <data name="Ed_OpenFiles" xml:space="preserve"><value>Open subtitle files…</value></data>
+  <data name="Ed_OpenVideo" xml:space="preserve"><value>Open video…</value></data>
   <data name="Ed_OriginalTrack" xml:space="preserve"><value>Original</value></data>
   <data name="Ed_PickOriginal" xml:space="preserve"><value>Optional: open the original subtitle file (Cancel to skip)</value></data>
   <data name="Ed_PickTranslated" xml:space="preserve"><value>Open the translated subtitle file</value></data>
   <data name="Ed_PickVideo" xml:space="preserve"><value>Open a video with subtitles</value></data>
   <data name="Ed_Preview" xml:space="preserve"><value>Translate selected line</value></data>
   <data name="Ed_PreviewReady" xml:space="preserve"><value>Preview ready. Review it, then click "Use preview".</value></data>
-  <data name="Ed_Remuxing" xml:space="preserve"><value>Writing new MKV (no re-encoding)â€¦</value></data>
+  <data name="Ed_Remuxing" xml:space="preserve"><value>Writing new MKV (no re-encoding)…</value></data>
   <data name="Ed_ReplaceAll" xml:space="preserve"><value>Replace all</value></data>
   <data name="Ed_ReplaceWith" xml:space="preserve"><value>Replace with</value></data>
-  <data name="Ed_Replaced" xml:space="preserve"><value>Replaced Â· lines changed: {0}</value></data>
+  <data name="Ed_Replaced" xml:space="preserve"><value>Replaced · lines changed: {0}</value></data>
   <data name="Ed_Save" xml:space="preserve"><value>Save</value></data>
-  <data name="Ed_SaveAs" xml:space="preserve"><value>Save asâ€¦</value></data>
-  <data name="Ed_SaveIntoVideo" xml:space="preserve"><value>Save into new MKVâ€¦</value></data>
+  <data name="Ed_SaveAs" xml:space="preserve"><value>Save as…</value></data>
+  <data name="Ed_SaveIntoVideo" xml:space="preserve"><value>Save into new MKV…</value></data>
   <data name="Ed_Saved" xml:space="preserve"><value>Saved {0}</value></data>
   <data name="Ed_TranslatedTrack" xml:space="preserve"><value>Translation</value></data>
-  <data name="Ed_Translating" xml:space="preserve"><value>Translatingâ€¦</value></data>
+  <data name="Ed_Translating" xml:space="preserve"><value>Translating…</value></data>
   <data name="Ed_UsePreview" xml:space="preserve"><value>Use preview</value></data>
-  <data name="Ed_VideoOpened" xml:space="preserve"><value>{0} Â· text tracks: {1}</value></data>
+  <data name="Ed_VideoOpened" xml:space="preserve"><value>{0} · text tracks: {1}</value></data>
   <data name="Err_NoApiKey" xml:space="preserve"><value>No API key is stored for this engine. Add it in Settings.</value></data>
   <data name="Err_NoOllamaModel" xml:space="preserve"><value>No Ollama model selected. Start Ollama, install a model (for example: ollama pull qwen3:8b) and choose it on the Translation page.</value></data>
   <data name="Gl_Add" xml:space="preserve"><value>Add term</value></data>
@@ -108,11 +108,11 @@ This is a large download (about 5 GB) and is stored by Ollama on this PC. Contin
   <data name="Gl_ColTarget" xml:space="preserve"><value>Translation (empty = keep)</value></data>
   <data name="Gl_Discard" xml:space="preserve"><value>Discard unsaved glossary changes?</value></data>
   <data name="Gl_Entries" xml:space="preserve"><value>entries</value></data>
-  <data name="Gl_Export" xml:space="preserve"><value>Exportâ€¦</value></data>
-  <data name="Gl_Import" xml:space="preserve"><value>Importâ€¦</value></data>
-  <data name="Gl_OpenProject" xml:space="preserve"><value>Project glossaryâ€¦</value></data>
-  <data name="Gl_ScopeGlobal" xml:space="preserve"><value>Global glossary Â· applies to all videos</value></data>
-  <data name="Gl_ScopeProject" xml:space="preserve"><value>Project glossary Â· {0}</value></data>
+  <data name="Gl_Export" xml:space="preserve"><value>Export…</value></data>
+  <data name="Gl_Import" xml:space="preserve"><value>Import…</value></data>
+  <data name="Gl_OpenProject" xml:space="preserve"><value>Project glossary…</value></data>
+  <data name="Gl_ScopeGlobal" xml:space="preserve"><value>Global glossary · applies to all videos</value></data>
+  <data name="Gl_ScopeProject" xml:space="preserve"><value>Project glossary · {0}</value></data>
   <data name="Gl_Subtitle" xml:space="preserve"><value>Names and terms the translation must keep or translate in a fixed way. Protected terms are kept exactly as written (e.g. Kamehameha).</value></data>
   <data name="Gl_Unsaved" xml:space="preserve"><value>Unsaved changes</value></data>
   <data name="Gl_UseGlobal" xml:space="preserve"><value>Global glossary</value></data>
@@ -208,7 +208,7 @@ Stop it and remove it from the queue? The other files continue.</value></data>
   <data name="Set_UiLanguage" xml:space="preserve"><value>Interface language</value></data>
   <data name="Set_UiLanguageHint" xml:space="preserve"><value>Only changes the app's menus and labels, not subtitle languages.</value></data>
   <data name="Set_UpdateAvailable" xml:space="preserve"><value>Version {0} is available. Click again to open the download page.</value></data>
-  <data name="Set_UpdateChecking" xml:space="preserve"><value>Checkingâ€¦</value></data>
+  <data name="Set_UpdateChecking" xml:space="preserve"><value>Checking…</value></data>
   <data name="Set_UpdateLatest" xml:space="preserve"><value>You have the latest version ({0}).</value></data>
   <data name="Set_UpdateUnknown" xml:space="preserve"><value>Could not check for updates. Releases are listed on almarfeld.com.</value></data>
   <data name="Setup_Download" xml:space="preserve"><value>Download</value></data>
@@ -219,11 +219,11 @@ Stop it and remove it from the queue? The other files continue.</value></data>
 It is stored by Ollama on this PC and can take several minutes. You can keep using SubFlow meanwhile.</value></data>
   <data name="Setup_FfmpegText" xml:space="preserve"><value>Free tool that reads and writes video files. Required.</value></data>
   <data name="Setup_Hw12" xml:space="preserve"><value>graphics card with 12 GB or more</value></data>
-  <data name="Setup_Hw16" xml:space="preserve"><value>graphics card with 12â€“16 GB</value></data>
-  <data name="Setup_Hw4" xml:space="preserve"><value>graphics card with 4â€“6 GB, or runs slowly on the processor</value></data>
+  <data name="Setup_Hw16" xml:space="preserve"><value>graphics card with 12–16 GB</value></data>
+  <data name="Setup_Hw4" xml:space="preserve"><value>graphics card with 4–6 GB, or runs slowly on the processor</value></data>
   <data name="Setup_Hw8" xml:space="preserve"><value>graphics card with 8 GB or more</value></data>
   <data name="Setup_InUse" xml:space="preserve"><value>In use</value></data>
-  <data name="Setup_Installed" xml:space="preserve"><value>Installed Â· {0}</value></data>
+  <data name="Setup_Installed" xml:space="preserve"><value>Installed · {0}</value></data>
   <data name="Setup_InstalledShort" xml:space="preserve"><value>Installed</value></data>
   <data name="Setup_Manual" xml:space="preserve"><value>Download page</value></data>
   <data name="Setup_MkvText" xml:space="preserve"><value>Improves how MKV files are written. SubFlow also works without it.</value></data>
@@ -238,20 +238,20 @@ It is stored by Ollama on this PC and can take several minutes. You can keep usi
   <data name="Setup_NotInstalled" xml:space="preserve"><value>Not installed yet.</value></data>
   <data name="Setup_NotInstalledOptional" xml:space="preserve"><value>Not installed (optional).</value></data>
   <data name="Setup_OcrText" xml:space="preserve"><value>Needed only for Blu-ray image subtitles (PGS). Add the subtitle language in Windows; its text recognition is installed with it.</value></data>
-  <data name="Setup_OllamaRunning" xml:space="preserve"><value>Installed and running Â· version {0}</value></data>
+  <data name="Setup_OllamaRunning" xml:space="preserve"><value>Installed and running · version {0}</value></data>
   <data name="Setup_OllamaStopped" xml:space="preserve"><value>Installed, but not running.</value></data>
   <data name="Setup_OllamaText" xml:space="preserve"><value>Free program that runs AI models on your own PC, so translation is private and costs nothing. Required for local translation.</value></data>
   <data name="Setup_OpenLanguageSettings" xml:space="preserve"><value>Open language settings</value></data>
   <data name="Setup_Optional" xml:space="preserve"><value>Optional</value></data>
   <data name="Setup_Ready" xml:space="preserve"><value>All set: SubFlow is ready to translate. Add videos on the Videos page.</value></data>
   <data name="Setup_Recommended" xml:space="preserve"><value>Recommended</value></data>
-  <data name="Setup_Starting" xml:space="preserve"><value>Startingâ€¦</value></data>
+  <data name="Setup_Starting" xml:space="preserve"><value>Starting…</value></data>
   <data name="Setup_Subtitle" xml:space="preserve"><value>Everything SubFlow needs, in order. Each button installs or downloads one thing after asking you first. Nothing is installed without your confirmation.</value></data>
   <data name="Setup_UseModel" xml:space="preserve"><value>Use this model</value></data>
   <data name="Side_Engine" xml:space="preserve"><value>Active engine</value></data>
   <data name="Status_Cancelled" xml:space="preserve"><value>Cancelled</value></data>
   <data name="Status_Completed" xml:space="preserve"><value>Completed</value></data>
-  <data name="Status_CompletedWithWarnings" xml:space="preserve"><value>Completed Â· warnings</value></data>
+  <data name="Status_CompletedWithWarnings" xml:space="preserve"><value>Completed · warnings</value></data>
   <data name="Status_Failed" xml:space="preserve"><value>Failed</value></data>
   <data name="Status_Interrupted" xml:space="preserve"><value>Interrupted</value></data>
   <data name="Status_Pending" xml:space="preserve"><value>Waiting</value></data>
@@ -266,12 +266,12 @@ Continue?</value></data>
   <data name="Tr_CloudConsentTitle" xml:space="preserve"><value>Send subtitle text to a cloud service?</value></data>
   <data name="Tr_CloudPaid" xml:space="preserve"><value>This is a paid API: requests may be billed to your account.</value></data>
   <data name="Tr_Concurrency" xml:space="preserve"><value>Parallel files</value></data>
-  <data name="Tr_ConcurrencyHint" xml:space="preserve"><value>With one local GPU, 1â€“2 is usually fastest. Cloud engines handle more.</value></data>
+  <data name="Tr_ConcurrencyHint" xml:space="preserve"><value>With one local GPU, 1–2 is usually fastest. Cloud engines handle more.</value></data>
   <data name="Tr_Default" xml:space="preserve"><value>Default</value></data>
   <data name="Tr_Engine" xml:space="preserve"><value>Translation engine</value></data>
   <data name="Tr_ExistingOutput" xml:space="preserve"><value>If the output file already exists</value></data>
   <data name="Tr_ExistingTrack" xml:space="preserve"><value>If the video already has a subtitle in a target language</value></data>
-  <data name="Tr_Free" xml:space="preserve"><value>FREE Â· LOCAL</value></data>
+  <data name="Tr_Free" xml:space="preserve"><value>FREE · LOCAL</value></data>
   <data name="Tr_KeyMissing" xml:space="preserve"><value>No API key stored.</value></data>
   <data name="Tr_KeyStored" xml:space="preserve"><value>API key stored securely.</value></data>
   <data name="Tr_MakeDefault" xml:space="preserve"><value>Make the first new track the default subtitle</value></data>
@@ -280,10 +280,10 @@ Continue?</value></data>
   <data name="Tr_NoteCloud" xml:space="preserve"><value>{0}: subtitle text (not video) is sent to {1}. This may incur charges on your account. Configure keys in Settings.</value></data>
   <data name="Tr_NoteOllama" xml:space="preserve"><value>Runs entirely on this computer: no internet connection, no cost, no data leaves your PC. Quality and language coverage depend on the model you choose.</value></data>
   <data name="Tr_NoteOpenAiLocal" xml:space="preserve"><value>Local OpenAI-compatible server at {0} (model {1}). Text stays on this computer.</value></data>
-  <data name="Tr_OllamaChecking" xml:space="preserve"><value>Checking Ollamaâ€¦</value></data>
+  <data name="Tr_OllamaChecking" xml:space="preserve"><value>Checking Ollama…</value></data>
   <data name="Tr_OllamaNoModels" xml:space="preserve"><value>Ollama is running but no suitable model is installed. Install one yourself, e.g. 'ollama pull qwen3:8b'. Suggestions: {0}</value></data>
   <data name="Tr_OllamaOffline" xml:space="preserve"><value>Ollama is not running.</value></data>
-  <data name="Tr_OllamaReady" xml:space="preserve"><value>Ollama {0} Â· models installed: {1}</value></data>
+  <data name="Tr_OllamaReady" xml:space="preserve"><value>Ollama {0} · models installed: {1}</value></data>
   <data name="Tr_OutBoth" xml:space="preserve"><value>MKV + subtitle files</value></data>
   <data name="Tr_OutFiles" xml:space="preserve"><value>Subtitle files only</value></data>
   <data name="Tr_OutMkv" xml:space="preserve"><value>MKV with new tracks</value></data>
@@ -301,23 +301,23 @@ Continue?</value></data>
   <data name="Tr_Start" xml:space="preserve"><value>Start translation</value></data>
   <data name="Tr_Subtitle" xml:space="preserve"><value>Choose the source and target languages, the AI engine and where the results go.</value></data>
   <data name="Tr_Targets" xml:space="preserve"><value>Translate into</value></data>
-  <data name="Tr_TargetsCount" xml:space="preserve"><value>Languages selected: {0} Â· each is translated directly from the source</value></data>
+  <data name="Tr_TargetsCount" xml:space="preserve"><value>Languages selected: {0} · each is translated directly from the source</value></data>
   <data name="Tr_TrackKeepBoth" xml:space="preserve"><value>Translate anyway and keep both tracks</value></data>
   <data name="Tr_TrackReplace" xml:space="preserve"><value>Replace the existing track in the new file</value></data>
   <data name="Tr_TrackSkip" xml:space="preserve"><value>Skip that language (recommended)</value></data>
   <data name="Tr_VideoSummary" xml:space="preserve"><value>{0} of {1} videos ready to translate</value></data>
   <data name="Track_File" xml:space="preserve"><value>file</value></data>
-  <data name="Track_ImageOcr" xml:space="preserve"><value>Image Â· read with OCR</value></data>
-  <data name="Track_ImageUnsupported" xml:space="preserve"><value>Image Â· not supported (PGS only)</value></data>
+  <data name="Track_ImageOcr" xml:space="preserve"><value>Image · read with OCR</value></data>
+  <data name="Track_ImageUnsupported" xml:space="preserve"><value>Image · not supported (PGS only)</value></data>
   <data name="Track_Translatable" xml:space="preserve"><value>Translatable</value></data>
   <data name="Track_Unsupported" xml:space="preserve"><value>Unsupported</value></data>
   <data name="Video_ImageOnly" xml:space="preserve"><value>Image subtitles only</value></data>
   <data name="Video_NoSubs" xml:space="preserve"><value>No subtitle tracks in this file.</value></data>
   <data name="Video_NoSubsShort" xml:space="preserve"><value>No subtitles</value></data>
   <data name="Video_Ready" xml:space="preserve"><value>Ready</value></data>
-  <data name="Video_ReadyOcr" xml:space="preserve"><value>Ready Â· OCR</value></data>
-  <data name="Video_ReadySidecar" xml:space="preserve"><value>Ready Â· subtitle file</value></data>
-  <data name="Video_Scanning" xml:space="preserve"><value>Scanningâ€¦</value></data>
+  <data name="Video_ReadyOcr" xml:space="preserve"><value>Ready · OCR</value></data>
+  <data name="Video_ReadySidecar" xml:space="preserve"><value>Ready · subtitle file</value></data>
+  <data name="Video_Scanning" xml:space="preserve"><value>Scanning…</value></data>
   <data name="Video_Unreadable" xml:space="preserve"><value>Unreadable</value></data>
   <data name="Videos_AddFiles" xml:space="preserve"><value>Add files</value></data>
   <data name="Videos_AddFolder" xml:space="preserve"><value>Add folder</value></data>

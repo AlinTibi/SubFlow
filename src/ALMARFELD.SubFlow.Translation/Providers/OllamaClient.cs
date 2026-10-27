@@ -76,7 +76,7 @@ public sealed class OllamaClient
 
     /// <summary>
     /// Downloads a model from the Ollama library (POST /api/pull, streamed), reporting progress as
-    /// a fraction 0â€“1 together with Ollama's status text. Large models take many minutes, so this
+    /// a fraction 0–1 together with Ollama's status text. Large models take many minutes, so this
     /// call has no timeout of its own; cancel it with <paramref name="ct"/>.
     /// </summary>
     public async Task PullAsync(string model, IProgress<(double Fraction, string Status)>? progress, CancellationToken ct)
