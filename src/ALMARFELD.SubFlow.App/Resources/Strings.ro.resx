@@ -11,6 +11,7 @@
   <data name="Common_Remove" xml:space="preserve"><value>Elimină</value></data>
   <data name="Common_ShowInFolder" xml:space="preserve"><value>Arată în folder</value></data>
   <data name="Dash_Completed" xml:space="preserve"><value>Fișiere finalizate</value></data>
+  <data name="Dash_ContinueQueue" xml:space="preserve"><value>Continuă</value></data>
   <data name="Dash_Errors" xml:space="preserve"><value>Erori</value></data>
   <data name="Dash_FixFailed" xml:space="preserve"><value>Comanda s-a încheiat cu codul {0}. Detaliile sunt în fereastra de consolă.</value></data>
   <data name="Dash_GoEngine" xml:space="preserve"><value>Alege motorul</value></data>
@@ -34,6 +35,7 @@ Continui?</value></data>
   <data name="Dash_NoModels" xml:space="preserve"><value>Ollama rulează, dar nu are încă niciun model.</value></data>
   <data name="Dash_Ocr" xml:space="preserve"><value>OCR Windows (subtitrări imagine)</value></data>
   <data name="Dash_OcrMissing" xml:space="preserve"><value>Nicio limbă OCR instalată. Adaugă o limbă cu OCR din Setări Windows → Oră și limbă.</value></data>
+  <data name="Dash_OpenQueue" xml:space="preserve"><value>Deschide coada</value></data>
   <data name="Dash_PrivacyCloud" xml:space="preserve"><value>Motor cloud: textul subtitrărilor este trimis furnizorului.</value></data>
   <data name="Dash_PrivacyLocal" xml:space="preserve"><value>Procesare locală. Nimic nu părăsește acest PC.</value></data>
   <data name="Dash_Progress" xml:space="preserve"><value>Progres curent</value></data>
@@ -51,6 +53,7 @@ Este o descărcare mare (aproximativ 5 GB), salvată de Ollama pe acest PC. Cont
   <data name="Dash_Title" xml:space="preserve"><value>Bun venit în SubFlow</value></data>
   <data name="Dash_VideosLoaded" xml:space="preserve"><value>videoclipuri încărcate</value></data>
   <data name="Dash_Waiting" xml:space="preserve"><value>Fișiere în așteptare</value></data>
+  <data name="Dash_WaitingNotice" xml:space="preserve"><value>Fișiere în așteptare în coadă: {0}. Continuă traducerea lor sau deschide coada ca să le scoți.</value></data>
   <data name="Drop_Hint" xml:space="preserve"><value>Folderele sunt scanate recursiv pentru fișiere MKV, MP4, MOV, AVI și WebM.</value></data>
   <data name="Drop_Title" xml:space="preserve"><value>Plasează videoclipuri sau foldere</value></data>
   <data name="Ed_ApplyGlossary" xml:space="preserve"><value>Aplică glosarul</value></data>
@@ -118,6 +121,7 @@ Este o descărcare mare (aproximativ 5 GB), salvată de Ollama pe acest PC. Cont
   <data name="Hist_ColLanguages" xml:space="preserve"><value>Limbi</value></data>
   <data name="Hist_ColStatus" xml:space="preserve"><value>Stare</value></data>
   <data name="Hist_ColWhen" xml:space="preserve"><value>Când</value></data>
+  <data name="Hist_Empty" xml:space="preserve"><value>Niciun fișier procesat încă. Traducerile terminate apar aici.</value></data>
   <data name="Hist_Export" xml:space="preserve"><value>Exportă raport</value></data>
   <data name="Hist_Subtitle" xml:space="preserve"><value>Toate fișierele procesate, salvate local pe acest computer.</value></data>
   <data name="Main_CloseWhileRunning" xml:space="preserve"><value>Traducerea rulează încă. Închizi oricum? Fișierele neterminate pot fi reluate data viitoare.</value></data>
