@@ -11,6 +11,7 @@
   <data name="Common_Remove" xml:space="preserve"><value>Remove</value></data>
   <data name="Common_ShowInFolder" xml:space="preserve"><value>Show in folder</value></data>
   <data name="Dash_Completed" xml:space="preserve"><value>Files completed</value></data>
+  <data name="Dash_ContinueQueue" xml:space="preserve"><value>Continue</value></data>
   <data name="Dash_Errors" xml:space="preserve"><value>Errors</value></data>
   <data name="Dash_FixFailed" xml:space="preserve"><value>The command ended with exit code {0}. See the console output for details.</value></data>
   <data name="Dash_GoEngine" xml:space="preserve"><value>Choose engine</value></data>
@@ -34,6 +35,7 @@ Continue?</value></data>
   <data name="Dash_NoModels" xml:space="preserve"><value>Ollama is running but has no model yet.</value></data>
   <data name="Dash_Ocr" xml:space="preserve"><value>Windows OCR (image subtitles)</value></data>
   <data name="Dash_OcrMissing" xml:space="preserve"><value>No OCR languages installed. Add a language with OCR in Windows Settings → Time &amp; language.</value></data>
+  <data name="Dash_OpenQueue" xml:space="preserve"><value>Open queue</value></data>
   <data name="Dash_PrivacyCloud" xml:space="preserve"><value>Cloud engine: subtitle text is sent to the provider.</value></data>
   <data name="Dash_PrivacyLocal" xml:space="preserve"><value>Local processing. Nothing leaves this PC.</value></data>
   <data name="Dash_Progress" xml:space="preserve"><value>Current progress</value></data>
@@ -51,6 +53,7 @@ This is a large download (about 5 GB) and is stored by Ollama on this PC. Contin
   <data name="Dash_Title" xml:space="preserve"><value>Welcome to SubFlow</value></data>
   <data name="Dash_VideosLoaded" xml:space="preserve"><value>videos loaded</value></data>
   <data name="Dash_Waiting" xml:space="preserve"><value>Files waiting</value></data>
+  <data name="Dash_WaitingNotice" xml:space="preserve"><value>Files waiting in the queue: {0}. Continue translating them, or open the queue to remove them.</value></data>
   <data name="Drop_Hint" xml:space="preserve"><value>Folders are scanned recursively for MKV, MP4, MOV, AVI and WebM files.</value></data>
   <data name="Drop_Title" xml:space="preserve"><value>Drop videos or folders</value></data>
   <data name="Ed_ApplyGlossary" xml:space="preserve"><value>Apply glossary</value></data>
@@ -118,6 +121,7 @@ This is a large download (about 5 GB) and is stored by Ollama on this PC. Contin
   <data name="Hist_ColLanguages" xml:space="preserve"><value>Languages</value></data>
   <data name="Hist_ColStatus" xml:space="preserve"><value>Status</value></data>
   <data name="Hist_ColWhen" xml:space="preserve"><value>When</value></data>
+  <data name="Hist_Empty" xml:space="preserve"><value>No files processed yet. Finished translations appear here.</value></data>
   <data name="Hist_Export" xml:space="preserve"><value>Export report</value></data>
   <data name="Hist_Subtitle" xml:space="preserve"><value>Every processed file, stored locally on this computer.</value></data>
   <data name="Main_CloseWhileRunning" xml:space="preserve"><value>Translation is still running. Close anyway? Unfinished files can be resumed next time.</value></data>

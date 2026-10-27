@@ -15,11 +15,29 @@ public partial class App : Application
     {
         base.OnStartup(e);
 
-        // One instance per user: two instances would compete for the same queue and output files.
-        _singleInstance = new Mutex(true, @"Local\ALMARFELD.SubFlow.SingleInstance", out var first);
+        // One instance per profile: two instances would compete for the same queue and output files.
+        // A separate profile ("--data", used for QA and portable use) gets its own instance.
+        var d = Array.IndexOf(e.Args, "--data");
+        string? dataDir;
+        string mutexName;
+        bool first;
+        try
+        {
+            dataDir = SingleInstanceProfile.DataDirectory(e.Args);
+            mutexName = SingleInstanceProfile.MutexName(dataDir);
+            _singleInstance = new Mutex(true, mutexName, out first);
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show("SubFlow could not start: " + ex.Message, "ALMARFELD SubFlow", MessageBoxButton.OK, MessageBoxImage.Error);
+            Shutdown(1);
+            return;
+        }
         if (!first)
         {
-            MessageBox.Show("ALMARFELD SubFlow is already running.", "ALMARFELD SubFlow", MessageBoxButton.OK, MessageBoxImage.Information);
+            // Already open: bring that window to the front instead of starting a second copy.
+            if (!ActivateRunningInstance(mutexName))
+                MessageBox.Show("ALMARFELD SubFlow is already running.", "ALMARFELD SubFlow", MessageBoxButton.OK, MessageBoxImage.Information);
             Shutdown();
             return;
         }
@@ -29,12 +47,10 @@ public partial class App : Application
         TaskScheduler.UnobservedTaskException += (_, args) => { Log(args.Exception); args.SetObserved(); };
 
         // "--data <folder>" keeps settings, database and logs in a separate profile (portable/QA use).
-        var d = Array.IndexOf(e.Args, "--data");
         try
         {
-            var paths = d >= 0 && d + 1 < e.Args.Length
-                ? new Infrastructure.Persistence.AppPaths(Path.Combine(Path.GetFullPath(e.Args[d + 1]), "roaming"),
-                                                          Path.Combine(Path.GetFullPath(e.Args[d + 1]), "local"))
+            var paths = dataDir is not null
+                ? new Infrastructure.Persistence.AppPaths(Path.Combine(dataDir, "roaming"), Path.Combine(dataDir, "local"))
                 : null;
             _services = new AppServices(paths);
         }
@@ -49,6 +65,12 @@ public partial class App : Application
         var vm = new MainViewModel(_services);
         var window = new MainWindow { DataContext = vm };
         MainWindow = window;
+        window.SourceInitialized += (_, _) =>
+        {
+            var handle = new System.Windows.Interop.WindowInteropHelper(window).Handle;
+            _ = SetProp(handle, mutexName, new IntPtr(1));
+            window.Closed += (_, _) => _ = RemoveProp(handle, mutexName);
+        };
 
         if (ScreenshotMode.TryParse(e.Args, out var shotDir, out var shotImport))
         {
@@ -72,6 +94,45 @@ public partial class App : Application
         if (d >= 0 && d + 1 < e.Args.Length) files.Remove(e.Args[d + 1]);
         if (files.Count > 0) _ = ((MainViewModel)window.DataContext).DropAsync(files);
     }
+
+    private static bool ActivateRunningInstance(string mutexName)
+    {
+        using var current = System.Diagnostics.Process.GetCurrentProcess();
+        foreach (var other in System.Diagnostics.Process.GetProcessesByName(current.ProcessName))
+        {
+            using (other)
+            {
+                try
+                {
+                    var handle = other.MainWindowHandle;
+                    if (other.Id == current.Id || handle == IntPtr.Zero || GetProp(handle, mutexName) == IntPtr.Zero) continue;
+                    if (IsIconic(handle)) _ = ShowWindow(handle, 9); // SW_RESTORE
+                    return SetForegroundWindow(handle);
+                }
+                catch (InvalidOperationException) { /* The other process exited while enumerating. */ }
+                catch (System.ComponentModel.Win32Exception) { /* Ignore inaccessible processes. */ }
+            }
+        }
+        return false;
+    }
+
+    [System.Runtime.InteropServices.DllImport("user32.dll")]
+    private static extern bool SetForegroundWindow(IntPtr hwnd);
+
+    [System.Runtime.InteropServices.DllImport("user32.dll")]
+    private static extern bool ShowWindow(IntPtr hwnd, int command);
+
+    [System.Runtime.InteropServices.DllImport("user32.dll")]
+    private static extern bool IsIconic(IntPtr hwnd);
+
+    [System.Runtime.InteropServices.DllImport("user32.dll", EntryPoint = "SetPropW", CharSet = System.Runtime.InteropServices.CharSet.Unicode)]
+    private static extern bool SetProp(IntPtr hwnd, string name, IntPtr value);
+
+    [System.Runtime.InteropServices.DllImport("user32.dll", EntryPoint = "GetPropW", CharSet = System.Runtime.InteropServices.CharSet.Unicode)]
+    private static extern IntPtr GetProp(IntPtr hwnd, string name);
+
+    [System.Runtime.InteropServices.DllImport("user32.dll", EntryPoint = "RemovePropW", CharSet = System.Runtime.InteropServices.CharSet.Unicode)]
+    private static extern IntPtr RemoveProp(IntPtr hwnd, string name);
 
     protected override void OnExit(ExitEventArgs e)
     {

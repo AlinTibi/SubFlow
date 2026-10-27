@@ -66,6 +66,21 @@
                 </Grid>
             </Border>
 
+            <!-- Files left in the queue -->
+            <Border Style="{StaticResource Card}" Margin="0,0,0,18" Padding="18,12" BorderBrush="{StaticResource Accent}"
+                    Visibility="{Binding ShowWaitingNotice, Converter={StaticResource Vis}}">
+                <DockPanel>
+                    <StackPanel DockPanel.Dock="Right" Orientation="Horizontal" VerticalAlignment="Center">
+                        <Button Content="{l:Loc Dash_OpenQueue}" Command="{Binding GoCommand}" CommandParameter="Queue" Margin="0,0,8,0"/>
+                        <Button Style="{StaticResource PrimaryButton}" Command="{Binding Queue.StartCommand}">
+                            <TextBlock Text="{l:Loc Dash_ContinueQueue}" Foreground="White"/>
+                        </Button>
+                    </StackPanel>
+                    <TextBlock Text="&#xE946;" Style="{StaticResource Icon}" Foreground="{StaticResource Accent}" VerticalAlignment="Center" Margin="0,0,12,0"/>
+                    <TextBlock Text="{Binding WaitingNotice}" VerticalAlignment="Center" TextWrapping="Wrap"/>
+                </DockPanel>
+            </Border>
+
             <!-- Stats -->
             <UniformGrid Columns="4" Margin="-6,0,-6,18">
                 <UniformGrid.Resources>
@@ -73,7 +88,7 @@
                         <Setter Property="Margin" Value="6,0"/>
                     </Style>
                 </UniformGrid.Resources>
-                <Border>
+                <Border Cursor="Hand" MouseLeftButtonUp="OnWaitingClick" ToolTip="{l:Loc Dash_OpenQueue}">
                     <StackPanel>
                         <TextBlock Text="{l:Loc Dash_Waiting}" Style="{StaticResource Caption}"/>
                         <TextBlock Text="{Binding Queue.Waiting}" FontSize="30" FontWeight="SemiBold"/>

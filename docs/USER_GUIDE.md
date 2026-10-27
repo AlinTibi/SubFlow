@@ -75,6 +75,8 @@ Press **Start**. The jobs are saved to the queue and processing begins. You can 
 
 ## 4. Queue
 
+Waiting items are saved between sessions. The Dashboard shows how many are waiting: **Continue** starts that queue, and **Open queue** (or the **Files waiting** card) lets you review or remove items first. Removing an item from the list does not delete its source file. Stopping a running item requires confirmation.
+
 Each file goes through these steps: probe → choose track → extract → detect language → translate (one language at a time) → mux → validate → move into place.
 
 - **Pause / resume** is cooperative: the current step finishes, then work waits.
@@ -90,6 +92,8 @@ Each file goes through these steps: probe → choose track → extract → detec
 ## 5. History
 
 Every finished file is recorded with its status, languages, engine, model, duration and output path. **Export report** writes a CSV file. **Clear history** removes only the records, never any files.
+
+An empty History explains that completed translations will appear there. Opening SubFlow again for the same profile restores its existing window when Windows allows foreground activation, rather than starting another worker for that queue. Advanced/portable use can select a separate profile with `--data "profile folder"`; each distinct profile has its own instance.
 
 ## 6. Subtitle editor
 

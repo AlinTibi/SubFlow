@@ -2,6 +2,14 @@
 
 All notable changes to ALMARFELD SubFlow. Versions follow [Semantic Versioning](https://semver.org).
 
+## 1.2.2 (2026-10-27)
+
+- Dashboard explains waiting queue items and offers Continue and Open queue actions. The waiting-files card opens the queue.
+- Relaunching an open profile restores its matching window when Windows permits foreground activation; separate data profiles can run independently.
+- Normalizes profile paths and handles invalid profile arguments without a raw startup exception.
+- Empty History explains where finished translations appear.
+- Retains v1.2.1 selection, duplicate prevention and safe-export protections.
+
 ## 1.2.1 (2026-10-26)
 
 - Queue removal targets the chosen row or selection, supports Delete and multiple selection, and updates the displayed counts.

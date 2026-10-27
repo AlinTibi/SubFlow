@@ -87,6 +87,30 @@ public class QueueViewModelTests
         Assert.Equal(originalSecond, await File.ReadAllBytesAsync(second));
     }
 
+    [Fact]
+    public Task DashboardExplainsPersistedWaitingItemsAndRefreshesAfterRemoval() => OnSta(async () =>
+    {
+        using var dir = new TempDir();
+        var services = Services(dir);
+        var queued = new QueueViewModel(services);
+        await queued.EnqueueAsync([Item(dir, "waiting.mkv")], false);
+        var restored = new QueueViewModel(services);
+        var videos = new VideosViewModel(services);
+        var translation = new TranslationViewModel(services, videos, restored, () => { });
+        string? destination = null;
+        var dashboard = new DashboardViewModel(services, videos, translation, restored, page => destination = page);
+        Assert.True(dashboard.ShowWaitingNotice);
+        Assert.Contains("1", dashboard.WaitingNotice);
+        dashboard.GoCommand.Execute("Queue");
+        Assert.Equal("Queue", destination);
+        var notifications = new List<string?>();
+        dashboard.PropertyChanged += (_, e) => notifications.Add(e.PropertyName);
+        restored.RemoveCommand.Execute(restored.Items[0]);
+        Assert.False(dashboard.ShowWaitingNotice);
+        Assert.Contains(nameof(DashboardViewModel.ShowWaitingNotice), notifications);
+        Assert.Empty(new QueueViewModel(services).Items);
+    });
+
     private static Task OnSta(Func<Task> action)
     {
         var completed = new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously);

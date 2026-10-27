@@ -36,6 +36,8 @@
                 <DataGridTextColumn Header="{l:Loc Hist_ColWhen}" Binding="{Binding When}" Width="170"/>
             </DataGrid.Columns>
         </DataGrid>
+        <TextBlock Grid.Row="1" Text="{l:Loc Hist_Empty}" Style="{StaticResource Subtle}" HorizontalAlignment="Center" VerticalAlignment="Center"
+                   IsHitTestVisible="False" Visibility="{Binding Entries.Count, Converter={StaticResource NotVis}}"/>
 
         <Border Grid.Row="2" Style="{StaticResource Card}" Margin="0,14,0,0" Visibility="{Binding Selected, Converter={StaticResource Vis}}">
             <DockPanel>

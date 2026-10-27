@@ -76,7 +76,13 @@ public sealed class DashboardViewModel : ObservableObject
         OnPropertyChanged(nameof(ActiveEngine));
         OnPropertyChanged(nameof(PrivacyNote));
         OnPropertyChanged(nameof(IsCloud));
+        OnPropertyChanged(nameof(ShowWaitingNotice));
+        OnPropertyChanged(nameof(WaitingNotice));
     }
+
+    /// <summary>Files left in the queue (e.g. from an earlier session) while nothing is running.</summary>
+    public bool ShowWaitingNotice => Queue.Waiting > 0 && !Queue.IsRunning;
+    public string WaitingNotice => L.F("Dash_WaitingNotice", Queue.Waiting);
 
     public async Task RefreshHealthAsync()
     {
