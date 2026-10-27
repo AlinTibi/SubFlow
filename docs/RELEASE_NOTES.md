@@ -2,6 +2,8 @@
 
 Translate subtitle tracks with local Ollama or an explicitly selected cloud provider, review results and export new MKV/subtitle copies. Supports batch queues, sidecar text subtitles, Windows PGS OCR, glossary and translation cache.
 
+- Adds a Setup page with dependency status, confirmed installation actions, model downloads with progress/cancellation and model selection. No setup download starts automatically.
+- Refines unchanged-sentence and missing-line checks and retries doubtful batches at smaller sizes; translation quality still needs human review.
 - Caps local Ollama output using subtitle size and context settings. Output-limit responses are rejected; exhausted transient failures fall back to smaller batches. Unrecoverable segments still fail, and output quality requires review.
 - Retains the v1.2.2 improvements below.
 - Explains waiting queue items on the Dashboard, with Continue and Open queue actions. The waiting-files card opens the queue.

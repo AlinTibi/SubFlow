@@ -36,6 +36,7 @@ Continui?</value></data>
   <data name="Dash_Ocr" xml:space="preserve"><value>OCR Windows (subtitrări imagine)</value></data>
   <data name="Dash_OcrMissing" xml:space="preserve"><value>Nicio limbă OCR instalată. Adaugă o limbă cu OCR din Setări Windows → Oră și limbă.</value></data>
   <data name="Dash_OpenQueue" xml:space="preserve"><value>Deschide coada</value></data>
+  <data name="Dash_OpenSetup" xml:space="preserve"><value>Deschide configurarea</value></data>
   <data name="Dash_PrivacyCloud" xml:space="preserve"><value>Motor cloud: textul subtitrărilor este trimis furnizorului.</value></data>
   <data name="Dash_PrivacyLocal" xml:space="preserve"><value>Procesare locală. Nimic nu părăsește acest PC.</value></data>
   <data name="Dash_Progress" xml:space="preserve"><value>Progres curent</value></data>
@@ -44,6 +45,8 @@ Continui?</value></data>
 Este o descărcare mare (aproximativ 5 GB), salvată de Ollama pe acest PC. Continui?</value></data>
   <data name="Dash_PullModel" xml:space="preserve"><value>Descarcă {0}</value></data>
   <data name="Dash_Resume" xml:space="preserve"><value>Reia</value></data>
+  <data name="Dash_SetupText" xml:space="preserve"><value>Lipsește ceva de care SubFlow are nevoie (FFmpeg, Ollama sau un model AI). Pagina Configurare le instalează pas cu pas.</value></data>
+  <data name="Dash_SetupTitle" xml:space="preserve"><value>Termină configurarea înainte de prima traducere</value></data>
   <data name="Dash_StartOllama" xml:space="preserve"><value>Pornește Ollama</value></data>
   <data name="Dash_Step1" xml:space="preserve"><value>Adaugă videoclipuri</value></data>
   <data name="Dash_Step2" xml:space="preserve"><value>Alege limbile</value></data>
@@ -132,6 +135,7 @@ Este o descărcare mare (aproximativ 5 GB), salvată de Ollama pe acest PC. Cont
   <data name="Nav_History" xml:space="preserve"><value>Istoric</value></data>
   <data name="Nav_Queue" xml:space="preserve"><value>Coadă</value></data>
   <data name="Nav_Settings" xml:space="preserve"><value>Setări</value></data>
+  <data name="Nav_Setup" xml:space="preserve"><value>Configurare</value></data>
   <data name="Nav_Translation" xml:space="preserve"><value>Traducere</value></data>
   <data name="Nav_Videos" xml:space="preserve"><value>Videoclipuri</value></data>
   <data name="Queue_AlreadyQueued" xml:space="preserve"><value>Nu au fost adăugate din nou, sunt deja în coadă: {0}.</value></data>
@@ -207,6 +211,43 @@ O opresc și o scot din coadă? Celelalte fișiere continuă.</value></data>
   <data name="Set_UpdateChecking" xml:space="preserve"><value>Se verifică…</value></data>
   <data name="Set_UpdateLatest" xml:space="preserve"><value>Ai ultima versiune ({0}).</value></data>
   <data name="Set_UpdateUnknown" xml:space="preserve"><value>Nu am putut verifica actualizările. Versiunile sunt publicate pe almarfeld.com.</value></data>
+  <data name="Setup_Download" xml:space="preserve"><value>Descărcare</value></data>
+  <data name="Setup_DownloadButton" xml:space="preserve"><value>Descarcă</value></data>
+  <data name="Setup_DownloadCancelled" xml:space="preserve"><value>Descărcare anulată.</value></data>
+  <data name="Setup_DownloadConfirm" xml:space="preserve"><value>Descarc modelul AI {0} ({1}) cu Ollama?
+
+Este salvat de Ollama pe acest calculator și poate dura câteva minute. Poți folosi SubFlow între timp.</value></data>
+  <data name="Setup_FfmpegText" xml:space="preserve"><value>Program gratuit care citește și scrie fișierele video. Obligatoriu.</value></data>
+  <data name="Setup_Hw12" xml:space="preserve"><value>placă video cu 12 GB sau mai mult</value></data>
+  <data name="Setup_Hw16" xml:space="preserve"><value>placă video cu 12–16 GB</value></data>
+  <data name="Setup_Hw4" xml:space="preserve"><value>placă video cu 4–6 GB sau rulează încet pe procesor</value></data>
+  <data name="Setup_Hw8" xml:space="preserve"><value>placă video cu 8 GB sau mai mult</value></data>
+  <data name="Setup_InUse" xml:space="preserve"><value>Folosit acum</value></data>
+  <data name="Setup_Installed" xml:space="preserve"><value>Instalat · {0}</value></data>
+  <data name="Setup_InstalledShort" xml:space="preserve"><value>Instalat</value></data>
+  <data name="Setup_Manual" xml:space="preserve"><value>Pagina de descărcare</value></data>
+  <data name="Setup_MkvText" xml:space="preserve"><value>Îmbunătățește scrierea fișierelor MKV. SubFlow merge și fără el.</value></data>
+  <data name="Setup_ModelGemma12" xml:space="preserve"><value>Traduceri foarte bune în multe limbi. Are nevoie de o placă video puternică.</value></data>
+  <data name="Setup_ModelGemma4" xml:space="preserve"><value>Cel mai mic și mai rapid. Bun pentru laptopuri și plăci video mai vechi; calitatea este mai slabă.</value></data>
+  <data name="Setup_ModelQwen14" xml:space="preserve"><value>Cea mai bună calitate din listă. Are nevoie de o placă video puternică și este mai lent.</value></data>
+  <data name="Setup_ModelQwen8" xml:space="preserve"><value>Cel mai bun echilibru între calitate și viteză, bun în multe limbi.</value></data>
+  <data name="Setup_ModelTitle" xml:space="preserve"><value>Model AI</value></data>
+  <data name="Setup_ModelsHint" xml:space="preserve"><value>Alege un model și descarcă-l. Primul este o alegere bună pentru majoritatea calculatoarelor; alege unul mai mic pentru laptop sau unul mai mare pentru o placă video puternică.</value></data>
+  <data name="Setup_ModelsNeedOllama" xml:space="preserve"><value>Instalează și pornește întâi Ollama (pasul 2), apoi descarcă un model de aici.</value></data>
+  <data name="Setup_MoreModels" xml:space="preserve"><value>Orice alt model de chat din biblioteca Ollama funcționează:</value></data>
+  <data name="Setup_NotInstalled" xml:space="preserve"><value>Nu este instalat încă.</value></data>
+  <data name="Setup_NotInstalledOptional" xml:space="preserve"><value>Nu este instalat (opțional).</value></data>
+  <data name="Setup_OcrText" xml:space="preserve"><value>Necesar doar pentru subtitrările-imagine de pe Blu-ray (PGS). Adaugă limba subtitrării în Windows; recunoașterea textului se instalează odată cu ea.</value></data>
+  <data name="Setup_OllamaRunning" xml:space="preserve"><value>Instalat și pornit · versiunea {0}</value></data>
+  <data name="Setup_OllamaStopped" xml:space="preserve"><value>Instalat, dar nu este pornit.</value></data>
+  <data name="Setup_OllamaText" xml:space="preserve"><value>Program gratuit care rulează modele AI pe calculatorul tău, ca traducerea să fie privată și gratuită. Necesar pentru traducerea locală.</value></data>
+  <data name="Setup_OpenLanguageSettings" xml:space="preserve"><value>Deschide setările de limbă</value></data>
+  <data name="Setup_Optional" xml:space="preserve"><value>Opțional</value></data>
+  <data name="Setup_Ready" xml:space="preserve"><value>Gata: SubFlow poate traduce. Adaugă videoclipuri din pagina Videoclipuri.</value></data>
+  <data name="Setup_Recommended" xml:space="preserve"><value>Recomandat</value></data>
+  <data name="Setup_Starting" xml:space="preserve"><value>Pornește…</value></data>
+  <data name="Setup_Subtitle" xml:space="preserve"><value>Tot ce are nevoie SubFlow, în ordine. Fiecare buton instalează sau descarcă un singur lucru, după ce te întreabă. Nimic nu se instalează fără confirmarea ta.</value></data>
+  <data name="Setup_UseModel" xml:space="preserve"><value>Folosește acest model</value></data>
   <data name="Side_Engine" xml:space="preserve"><value>Motor activ</value></data>
   <data name="Status_Cancelled" xml:space="preserve"><value>Anulat</value></data>
   <data name="Status_Completed" xml:space="preserve"><value>Finalizat</value></data>

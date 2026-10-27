@@ -10,6 +10,7 @@
         TextOptions.TextFormattingMode="Display">
     <Window.Resources>
         <DataTemplate DataType="{x:Type vm:DashboardViewModel}"><v:DashboardView/></DataTemplate>
+        <DataTemplate DataType="{x:Type vm:SetupViewModel}"><v:SetupView/></DataTemplate>
         <DataTemplate DataType="{x:Type vm:VideosViewModel}"><v:VideosView/></DataTemplate>
         <DataTemplate DataType="{x:Type vm:TranslationViewModel}"><v:TranslationView/></DataTemplate>
         <DataTemplate DataType="{x:Type vm:EditorViewModel}"><v:EditorView/></DataTemplate>
