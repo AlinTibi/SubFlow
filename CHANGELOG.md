@@ -43,8 +43,8 @@ All notable changes to ALMARFELD SubFlow. Versions follow [Semantic Versioning](
 ## 1.1.0 (2026-10-19)
 
 - **PGS image subtitles** (Blu-ray) are read with the OCR built into Windows and then translated. The recognised text is added as an "(OCR)" track. It runs locally and no model is downloaded.
-- **Subtitle files next to the video** (`Movie.en.srt`, `Movie.eng.sdh.ass`, â€¦) are used as the source when the video has no text track. The original file is added to the MKV too.
-- **Markup that wraps a whole line** (for example `<i>` on one line of a two-line cue, or ASS `{\i1}â€¦{\i0}`) is now kept in translations.
+- **Subtitle files next to the video** (`Movie.en.srt`, `Movie.eng.sdh.ass`, …) are used as the source when the video has no text track. The original file is added to the MKV too.
+- **Markup that wraps a whole line** (for example `<i>` on one line of a two-line cue, or ASS `{\i1}…{\i0}`) is now kept in translations.
 - The Videos page shows subtitle files and OCR-readable tracks, and the Dashboard lists the installed Windows OCR languages.
 
 ## 1.0.0 (2026-10-19)
