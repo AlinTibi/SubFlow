@@ -2,6 +2,12 @@
 
 All notable changes to ALMARFELD SubFlow. Versions follow [Semantic Versioning](https://semver.org).
 
+## 1.2.3 (2026-10-27)
+
+- Bounds local Ollama output by subtitle size and context settings. Responses stopped at the output limit are rejected rather than accepted as complete translations.
+- After transient failures exhaust retries, translation attempts smaller batches; unrecoverable segments still fail clearly. Cancellation and conservative exports are retained.
+- Includes the clearer waiting-queue Dashboard and profile-aware activation introduced in v1.2.2.
+
 ## 1.2.2 (2026-10-27)
 
 - Dashboard explains waiting queue items and offers Continue and Open queue actions. The waiting-files card opens the queue.

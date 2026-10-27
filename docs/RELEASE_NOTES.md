@@ -1,7 +1,9 @@
-# ALMARFELD SubFlow v1.2.2
+# ALMARFELD SubFlow v1.2.3
 
 Translate subtitle tracks with local Ollama or an explicitly selected cloud provider, review results and export new MKV/subtitle copies. Supports batch queues, sidecar text subtitles, Windows PGS OCR, glossary and translation cache.
 
+- Caps local Ollama output using subtitle size and context settings. Output-limit responses are rejected; exhausted transient failures fall back to smaller batches. Unrecoverable segments still fail, and output quality requires review.
+- Retains the v1.2.2 improvements below.
 - Explains waiting queue items on the Dashboard, with Continue and Open queue actions. The waiting-files card opens the queue.
 - Relaunches restore the matching profile window when Windows allows foreground activation. Separate data profiles can run independently; equivalent paths share the same instance lock. Invalid profile arguments show a controlled startup message.
 - Adds an explanation to empty History.

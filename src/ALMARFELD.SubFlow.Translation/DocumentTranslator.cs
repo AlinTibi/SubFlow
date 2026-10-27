@@ -150,8 +150,11 @@ public sealed class DocumentTranslator : ISubtitleTranslator
                     CorrectionNote = correction,
                 }, ct);
             }
-            catch (TranslationProviderException ex) when (ex.IsTransient && attempt < _options.MaxAttempts)
+            catch (TranslationProviderException ex) when (ex.IsTransient)
             {
+                // Timeouts, unreadable or runaway answers: retry, and after the last attempt fall
+                // through to splitting the batch, which smaller requests usually survive.
+                if (attempt == _options.MaxAttempts) break;
                 await Task.Delay(TimeSpan.FromTicks(_options.RetryDelay.Ticks * attempt), ct);
                 continue;
             }
