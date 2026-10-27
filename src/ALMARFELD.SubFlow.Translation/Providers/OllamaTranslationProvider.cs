@@ -46,6 +46,9 @@ public sealed class OllamaTranslationProvider(OllamaClient client, OllamaOptions
             {
                 ["temperature"] = options.Temperature,
                 ["num_ctx"] = options.ContextLength,
+                // A translation is about as long as its source. The cap stops a model that falls into
+                // a repetition loop within a token budget rather than letting it write until the timeout.
+                ["num_predict"] = MaxOutputTokens(request, options.ContextLength),
             },
             ["messages"] = new JsonArray
             {
@@ -57,5 +60,16 @@ public sealed class OllamaTranslationProvider(OllamaClient client, OllamaOptions
 
         var content = await client.ChatAsync(body, ct);
         return LlmResponseParser.Parse(content);
+    }
+
+    /// <summary>
+    /// Generous output budget: JSON overhead per segment plus several tokens per source character
+    /// (scripts such as Thai or Hindi need many tokens per character).
+    /// </summary>
+    internal static int MaxOutputTokens(TranslationBatchRequest request, int contextLength)
+    {
+        var chars = request.Segments.Sum(s => (long)s.Text.Length);
+        var budget = 256L + request.Segments.Count * 32L + chars * 3;
+        return (int)Math.Clamp(budget, 512L, Math.Max(512L, contextLength / 2L));
     }
 }

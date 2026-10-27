@@ -116,6 +116,9 @@ public sealed class OllamaClient
             try
             {
                 var obj = JsonNode.Parse(text) as JsonObject;
+                // "length" means the output budget ran out: usually a model stuck repeating itself.
+                if (obj?["done_reason"]?.GetValue<string>() == "length")
+                    throw new TranslationProviderException("The model kept writing without finishing the answer (output limit reached).", isTransient: true);
                 return obj?["message"]?["content"]?.GetValue<string>() ?? "";
             }
             catch (JsonException ex)
